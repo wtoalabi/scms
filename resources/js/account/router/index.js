@@ -22,8 +22,7 @@ router.beforeEach((to, from, next) => {
     Store.commit("commitTransitioning",true)
     setTimeout(()=>{
         Store.commit("commitTransitioning", false)
-    },300);
-     */
+    },300);*/
     Store.commit('setTitle', to.name);
     next()
 });

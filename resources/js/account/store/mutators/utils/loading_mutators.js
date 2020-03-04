@@ -4,6 +4,6 @@ export default {
     },
     setTitle({title}, payload){
         title = payload;
-        document.title = `${title} - Admin Dashboard | SCMS`
+        document.title = `${title} - User Account | SCMS`
     }
 }

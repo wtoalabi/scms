@@ -1,4 +1,7 @@
 import Vue from 'vue';
+window.Vue = Vue;
+import store from './store';
+const router = require('./router/').default;
 require('../bootstrap');
 import 'vuetify/dist/vuetify.min.css';
 import vuetify from '../plugins/vuetify.js' // path to vuetify export
@@ -8,5 +11,7 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
 Vue.component('default', require('../Default').default);
 
 new Vue({
+    store,
+    router,
     vuetify,
 }).$mount('#account');

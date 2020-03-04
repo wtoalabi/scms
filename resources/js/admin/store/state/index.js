@@ -1,5 +1,6 @@
+import default_state from "./utils/default_state";
 export default{
-    drawer:true,
+...default_state,
     admin: {
         role: {
             permissions:[
