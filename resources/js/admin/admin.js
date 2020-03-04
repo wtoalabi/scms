@@ -1,4 +1,5 @@
 import Vue from 'vue';
+window.Vue = Vue;
 require('../bootstrap');
 import 'vuetify/dist/vuetify.min.css';
 import vuetify from '../plugins/vuetify.js' // path to vuetify export

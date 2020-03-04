@@ -1,3 +1,8 @@
 export default{
-    user: {}
+    darkTheme:true,
+    admin: {
+        role: {
+            permissions:[]
+        }
+    }
 }
