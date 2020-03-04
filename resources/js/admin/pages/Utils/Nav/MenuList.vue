@@ -33,12 +33,23 @@
     data() {
       return {
           dialog: false,
-          drawer: null,
+          drawer: true,
 
       }
     },
-    methods: {},
-    computed: {}
+      watch:{
+          stateDrawer(){
+              this.drawer = this.stateDrawer;
+          }
+      },
+    methods: {
+
+    },
+    computed: {
+          stateDrawer(){
+            return  this.$store.state.drawer
+          }
+    }
   }
 
 </script>

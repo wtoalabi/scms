@@ -50,8 +50,7 @@
         }),
         methods:{
             setDrawer(){
-
-            /*@click.stop="drawer = !drawer"*/
+                this.$store.commit("commitDrawer", !this.$store.state.drawer)
             }
         },
         meta () {
@@ -61,7 +60,9 @@
             }
         },
         computed:{
+            drawer(){
 
+            }
         }
     }
 </script>

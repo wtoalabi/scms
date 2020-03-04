@@ -1,5 +1,5 @@
 export default{
-    darkTheme:true,
+    drawer:true,
     admin: {
         role: {
             permissions:[
