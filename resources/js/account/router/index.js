@@ -2,6 +2,11 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Store from '../store';
 import Overview from '../pages/Overview/Overview';
+import contacts from "./contacts";
+import emails from "./emails";
+import groups from "./groups";
+import sms from "./sms";
+import settings from "./settings";
 Vue.use(VueRouter);
 const router = new VueRouter({
     mode: 'hash',
@@ -15,14 +20,15 @@ const router = new VueRouter({
                 next()
             }
         },
+        ...contacts,
+        ...emails,
+        ...groups,
+        ...sms,
+        ...settings
     ]
 });
 router.beforeEach((to, from, next) => {
-    /*Store.commit("resetQueryState");
-    Store.commit("commitTransitioning",true)
-    setTimeout(()=>{
-        Store.commit("commitTransitioning", false)
-    },300);*/
+    Store.commit("resetQueryState");
     Store.commit('setTitle', to.name);
     next()
 });

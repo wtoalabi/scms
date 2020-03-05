@@ -5,6 +5,7 @@
           :clipped="$vuetify.breakpoint.lgAndUp"
           app
           width="250"
+          :mini-variant.sync="miniDrawer"
       >
           <v-list dense>
               <template>
@@ -37,17 +38,17 @@
 
       }
     },
-      watch:{
-          stateDrawer(){
-              this.drawer = this.stateDrawer;
-          }
-      },
     methods: {
 
     },
     computed: {
-          stateDrawer(){
-            return  this.$store.state.drawer
+          miniDrawer: {
+            set: function () {
+
+            },
+              get: function () {
+                  return this.$store.state.miniDrawer
+              }
           }
     }
   }

@@ -1,19 +1,21 @@
 <template>
     <v-app id="inspire">
-        <menu-list />
+        <menu-list/>
         <v-app-bar
             :clipped-left="$vuetify.breakpoint.lgAndUp"
             app
             color="blue darken-3"
             dark
         >
-            <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+            <v-app-bar-nav-icon @click="setDrawer"/>
             <v-toolbar-title
                 style="width:400px"
                 class="ml-0 pl-4"
             >
-                <span class="hidden-sm-and-down ">Simple Contact Management System</span>
-                <span class="hidden-md-and-up subtitle-2">Simple Contact Management System</span>
+                <div @click="goToHome" style="cursor:pointer;">
+                    <span class="hidden-sm-and-down">Simple Contacts Management System</span>
+                    <span class="hidden-md-and-up subtitle-2">Simple Contacts Management System</span>
+                </div>
             </v-toolbar-title>
             <v-text-field
                 flat
@@ -23,7 +25,7 @@
                 label="Search"
                 class="hidden-sm-and-down"
             />
-            <v-spacer />
+            <v-spacer/>
             <v-btn icon class="hidden-sm-and-down">
                 <v-icon>mdi-apps</v-icon>
             </v-btn>
@@ -41,25 +43,29 @@
 
 <script>
     import MenuList from "./Utils/Nav/MenuList";
+
     export default {
-        components:{MenuList},
+        components: {MenuList},
         props: {
             source: String,
         },
-        data: () => ({
-
-        }),
-        methods:{
-            setDrawer(){
-                this.$store.commit("commitDrawer", !this.$store.state.drawer)
+        data: () => ({}),
+        methods: {
+            setDrawer() {
+                this.$store.commit("commitMiniDrawer", !this.$store.state.miniDrawer)
+            },
+            goToHome(){
+                if(this.$route.path !== '/'){
+                    this.$router.push('/')
+                }
             }
         },
-        meta () {
+        meta() {
             let title = this.$store.state.title;
             return {
-                title:  `${title} ${title ? '|' : ''} SCMS`
+                title: `${title} ${title ? '|' : ''} SCMS`
             }
         },
-        computed:{}
+        computed: {}
     }
 </script>

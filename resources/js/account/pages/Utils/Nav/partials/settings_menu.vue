@@ -1,17 +1,17 @@
 <template>
     <div>
         <v-list-item
-            v-if="userCan('VIEW_CONTACTS')"
-            key="contacts"
-            to="/contacts"
+            v-if="userCan('VIEW_SETTINGS')"
+            key="settings"
             link
+            to="/settings"
         >
             <v-list-item-action>
-                <v-icon>mdi-contacts</v-icon>
+                <v-icon>mdi-account-cog</v-icon>
             </v-list-item-action>
             <v-list-item-content>
                 <v-list-item-title>
-                    Contacts
+                    Settings
                 </v-list-item-title>
             </v-list-item-content>
         </v-list-item>
@@ -28,11 +28,7 @@
 
             }
         },
-        methods: {
-            goToContacts(){
-                this.$router.push('contacts');
-            }
-        },
+        methods: {},
         computed: {}
     }
 

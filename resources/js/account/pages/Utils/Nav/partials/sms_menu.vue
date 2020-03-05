@@ -1,17 +1,17 @@
 <template>
     <div>
         <v-list-item
-            v-if="userCan('VIEW_CONTACTS')"
-            key="contacts"
-            to="/contacts"
+            v-if="userCan('VIEW_SMS')"
+            key="sms"
             link
+            to="/sms"
         >
             <v-list-item-action>
-                <v-icon>mdi-contacts</v-icon>
+                <v-icon>mdi-message-processing</v-icon>
             </v-list-item-action>
             <v-list-item-content>
                 <v-list-item-title>
-                    Contacts
+                    SMS
                 </v-list-item-title>
             </v-list-item-content>
         </v-list-item>
@@ -28,11 +28,7 @@
 
             }
         },
-        methods: {
-            goToContacts(){
-                this.$router.push('contacts');
-            }
-        },
+        methods: {},
         computed: {}
     }
 

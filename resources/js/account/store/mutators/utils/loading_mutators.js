@@ -1,6 +1,6 @@
 export default {
-    commitDrawer(state,payload){
-        state.drawer = payload
+    commitMiniDrawer(state,payload){
+        state.miniDrawer = payload
     },
     setTitle({title}, payload){
         title = payload;
