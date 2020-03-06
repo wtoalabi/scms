@@ -43,7 +43,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Uti
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n//\n//\n//\n//\n//\n//\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  data: function data() {\n    return {};\n  },\n  methods: {},\n  computed: {}\n});//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vcmVzb3VyY2VzL2pzL2FjY291bnQvcGFnZXMvT3ZlcnZpZXcvT3ZlcnZpZXcudnVlPzgyNjUiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7OztBQU9BO0FBQ0EsTUFEQSxrQkFDQTtBQUNBO0FBQ0EsR0FIQTtBQUlBLGFBSkE7QUFLQTtBQUxBIiwiZmlsZSI6Ii4vbm9kZV9tb2R1bGVzL2JhYmVsLWxvYWRlci9saWIvaW5kZXguanM/IS4vbm9kZV9tb2R1bGVzL3Z1ZXRpZnktbG9hZGVyL2xpYi9sb2FkZXIuanM/IS4vbm9kZV9tb2R1bGVzL3Z1ZS1sb2FkZXIvbGliL2luZGV4LmpzPyEuL3Jlc291cmNlcy9qcy9hZG1pbi9wYWdlcy9PdmVydmlldy9PdmVydmlldy52dWU/dnVlJnR5cGU9c2NyaXB0Jmxhbmc9anMmLmpzIiwic291cmNlc0NvbnRlbnQiOlsiPHRlbXBsYXRlPlxuICAgIDxkaXY+XG4gICAgICAgIDxoMT5PdmVydmlldyBQYWdlITwvaDE+XG4gICAgPC9kaXY+XG48L3RlbXBsYXRlPlxuXG48c2NyaXB0PlxuICAgIGV4cG9ydCBkZWZhdWx0IHtcbiAgICAgICAgZGF0YSgpIHtcbiAgICAgICAgICAgIHJldHVybiB7fVxuICAgICAgICB9LFxuICAgICAgICBtZXRob2RzOiB7fSxcbiAgICAgICAgY29tcHV0ZWQ6IHt9XG4gICAgfVxuXG48L3NjcmlwdD5cbiJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./node_modules/babel-loader/lib/index.js?!./node_modules/vuetify-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/pages/Overview/Overview.vue?vue&type=script&lang=js&\n");
+eval("__webpack_require__.r(__webpack_exports__);\n//\n//\n//\n//\n//\n//\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  data: function data() {\n    return {};\n  },\n  methods: {},\n  computed: {}\n});//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vcmVzb3VyY2VzL2pzL2FkbWluL3BhZ2VzL092ZXJ2aWV3L092ZXJ2aWV3LnZ1ZT9kMTUxIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7QUFPQTtBQUNBLE1BREEsa0JBQ0E7QUFDQTtBQUNBLEdBSEE7QUFJQSxhQUpBO0FBS0E7QUFMQSIsImZpbGUiOiIuL25vZGVfbW9kdWxlcy9iYWJlbC1sb2FkZXIvbGliL2luZGV4LmpzPyEuL25vZGVfbW9kdWxlcy92dWV0aWZ5LWxvYWRlci9saWIvbG9hZGVyLmpzPyEuL25vZGVfbW9kdWxlcy92dWUtbG9hZGVyL2xpYi9pbmRleC5qcz8hLi9yZXNvdXJjZXMvanMvYWRtaW4vcGFnZXMvT3ZlcnZpZXcvT3ZlcnZpZXcudnVlP3Z1ZSZ0eXBlPXNjcmlwdCZsYW5nPWpzJi5qcyIsInNvdXJjZXNDb250ZW50IjpbIjx0ZW1wbGF0ZT5cbiAgICA8ZGl2PlxuICAgICAgICA8aDE+T3ZlcnZpZXcgUGFnZSE8L2gxPlxuICAgIDwvZGl2PlxuPC90ZW1wbGF0ZT5cblxuPHNjcmlwdD5cbiAgICBleHBvcnQgZGVmYXVsdCB7XG4gICAgICAgIGRhdGEoKSB7XG4gICAgICAgICAgICByZXR1cm4ge31cbiAgICAgICAgfSxcbiAgICAgICAgbWV0aG9kczoge30sXG4gICAgICAgIGNvbXB1dGVkOiB7fVxuICAgIH1cblxuPC9zY3JpcHQ+XG4iXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./node_modules/babel-loader/lib/index.js?!./node_modules/vuetify-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/pages/Overview/Overview.vue?vue&type=script&lang=js&\n");
 
 /***/ }),
 
@@ -6041,17 +6041,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var loda
 
 /***/ }),
 
-/***/ "./resources/sass/account/account.scss":
-/*!*********************************************!*\
-  !*** ./resources/sass/account/account.scss ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("// removed by extract-text-webpack-plugin//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvc2Fzcy9hY2NvdW50L2FjY291bnQuc2Nzcz9hMmQzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBIiwiZmlsZSI6Ii4vcmVzb3VyY2VzL3Nhc3MvYWNjb3VudC9hY2NvdW50LnNjc3MuanMiLCJzb3VyY2VzQ29udGVudCI6WyIvLyByZW1vdmVkIGJ5IGV4dHJhY3QtdGV4dC13ZWJwYWNrLXBsdWdpbiJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./resources/sass/account/account.scss\n");
-
-/***/ }),
-
 /***/ "./resources/sass/admin/admin.scss":
 /*!*****************************************!*\
   !*** ./resources/sass/admin/admin.scss ***!
@@ -6074,16 +6063,27 @@ eval("// removed by extract-text-webpack-plugin//# sourceURL=[module]\n//# sourc
 
 /***/ }),
 
+/***/ "./resources/sass/user/user.scss":
+/*!***************************************!*\
+  !*** ./resources/sass/user/user.scss ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("// removed by extract-text-webpack-plugin//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvc2Fzcy91c2VyL3VzZXIuc2Nzcz9jZGY5Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBIiwiZmlsZSI6Ii4vcmVzb3VyY2VzL3Nhc3MvdXNlci91c2VyLnNjc3MuanMiLCJzb3VyY2VzQ29udGVudCI6WyIvLyByZW1vdmVkIGJ5IGV4dHJhY3QtdGV4dC13ZWJwYWNrLXBsdWdpbiJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./resources/sass/user/user.scss\n");
+
+/***/ }),
+
 /***/ 0:
-/*!*********************************************************************************************************************************************!*\
-  !*** multi ./resources/js/admin/admin.js ./resources/sass/admin/admin.scss ./resources/sass/account/account.scss ./resources/sass/app.scss ***!
-  \*********************************************************************************************************************************************/
+/*!***************************************************************************************************************************************!*\
+  !*** multi ./resources/js/admin/admin.js ./resources/sass/admin/admin.scss ./resources/sass/user/user.scss ./resources/sass/app.scss ***!
+  \***************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /Users/mac/Documents/development/Web/scms/resources/js/admin/admin.js */"./resources/js/admin/admin.js");
 __webpack_require__(/*! /Users/mac/Documents/development/Web/scms/resources/sass/admin/admin.scss */"./resources/sass/admin/admin.scss");
-__webpack_require__(/*! /Users/mac/Documents/development/Web/scms/resources/sass/account/account.scss */"./resources/sass/account/account.scss");
+__webpack_require__(/*! /Users/mac/Documents/development/Web/scms/resources/sass/user/user.scss */"./resources/sass/user/user.scss");
 module.exports = __webpack_require__(/*! /Users/mac/Documents/development/Web/scms/resources/sass/app.scss */"./resources/sass/app.scss");
 
 

@@ -1,0 +1,87 @@
+html,
+body,
+#admin {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background: #cac3c3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  width: 35rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border-radius: 4px;
+  background: white;
+}
+
+.title {
+  font-size: 4rem;
+  letter-spacing: 2px;
+  font-weight: 800;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+
+.input {
+  display: block;
+  width: 15rem;
+  font-size: 14px;
+  line-height: 1.43;
+  color: inherit;
+  font-family: inherit;
+  background-clip: padding-box;
+  resize: none;
+  background-color: white;
+  box-shadow: rgba(22, 29, 37, 0.05) 0px 1px 0px 0px;
+  padding: 8px 12px;
+  border: 1px solid #c4cdd5;
+  -o-border-image: initial;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.3s ease-in-out 0s, box-shadow 0.3s ease-in-out 0s;
+  margin-top: 1rem;
+}
+
+.button {
+  margin: 5px 0;
+  background-color: #6d0f3b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  line-height: 35px;
+  outline: none;
+  padding: 0.4rem 2.1rem;
+  position: relative;
+  text-decoration: none;
+}
+
+.action {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.error {
+  color: red;
+}
+

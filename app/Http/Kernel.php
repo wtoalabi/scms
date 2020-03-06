@@ -2,6 +2,10 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\Admin\AdminMiddleware;
+use App\Http\Middleware\Shared\AdminUserMiddleware;
+use App\Http\Middleware\Shared\SharedMiddleware;
+use App\Http\Middleware\User\UserMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -37,7 +41,18 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
-
+        'admin' => [
+            AdminMiddleware::class
+        ],
+        'user' => [
+            UserMiddleware::class
+        ],
+        'admin_user' => [
+            AdminUserMiddleware::class
+        ],
+        'shared' => [
+            SharedMiddleware::class
+        ],
         'api' => [
             'throttle:60,1',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,

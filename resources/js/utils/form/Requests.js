@@ -83,14 +83,7 @@ export default {
         },
 
         showMessage({response = "Success!", color = 'primary', icon = "thumb_up"} = {}) {
-            this.$q.notify({
-                message: response,
-                color: color,
-                position: 'bottom-left',
-                actions: [
-                    {label: "Dismiss", color: 'white', icon: icon},
-                ]
-            })
+
         },
         startLoading(stopLoadingBar = false, load) {
             if (stopLoadingBar) {

@@ -1,6 +1,9 @@
 <?php
 
-return [
+    use App\Platform\Accounts\Admins\Admin;
+    use App\Platform\Accounts\Users\User;
+
+    return [
 
     /*
     |--------------------------------------------------------------------------
@@ -14,7 +17,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'user',
         'passwords' => 'users',
     ],
 
@@ -36,15 +39,20 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'user' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'user',
         ],
 
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
             'hash' => false,
+        ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admin',
+
         ],
     ],
 
@@ -66,9 +74,13 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'user' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => User::class,
+        ],
+        'admin' => [
+            'driver' => 'eloquent',
+            'model' => Admin::class,
         ],
 
         // 'users' => [
@@ -94,7 +106,7 @@ return [
 
     'passwords' => [
         'users' => [
-            'provider' => 'users',
+            'provider' => 'user',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

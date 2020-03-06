@@ -13,14 +13,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-    Route::domain('admin.scms.loc')->middleware('web')->group(function () {
-        Route::get('/', function(){
-            return view('admin.dashboard.index');
-        });
-    });
 
-    Route::domain('account.scms.loc')->middleware('web')->group(function () {
-        Route::get('/', function(){
-            return view('account.dashboard.index');
-        });
-    });

@@ -42,14 +42,14 @@ mix.webpackConfig({
 });
 
 mix.js('resources/js/admin/admin.js', 'public/js')
-    .js('resources/js/account/account.js', 'public/js')
+    .js('resources/js/user/user.js', 'public/js')
     .extract(['vue', 'lodash-es', 'axios'],'public/js/vendor.js')
     .options({
         extractVueStyles: true,
         globalVueStyles: 'resources/sass/custom/mixins.scss'
     })
     .sass('resources/sass/admin/admin.scss', 'public/css')
-    .sass('resources/sass/account/account.scss', 'public/css')
+    .sass('resources/sass/user/user.scss', 'public/css')
     .sass('resources/sass/app.scss', 'public/css');
 
 mix.webpackConfig({
