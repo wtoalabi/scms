@@ -4,10 +4,10 @@
    * Date: 6/3/2019
    */
   declare(strict_types=1);
-  
+
   namespace App\EntitySetup\Stubs\Tests;
-  
-  
+
+
   use App\EntitySetup\ScaffoldCommand;
   use Illuminate\Support\Str;
 
@@ -20,16 +20,17 @@
       static::moveSampleTest("Feature", $data);
       static::moveSampleTest("Unit", $data);
     }
-  
+
     private static function moveDefaultTestParentFor($test, $data) {
       $testName = base_path("tests\\{$test}TestCase.php");
       if(!$data['file']->exists($testName)) {
-        $dummyResource = $data['file']->get("App\EntitySetup\Stubs\Tests\\{$test}TestCase.stub");
+        $dummyResource = $data['file']->get("App/EntitySetup/Stubs/Tests/{$test}TestCase.stub");
+        dd($dummyResource);
         $data['file']->put($testName, $dummyResource);
       }
-      
+
     }
-  
+
     private static function moveSampleTest($test, $data) {
       $base = base_path("tests\\{$test}");
       $normalizedPath = ScaffoldCommand::NormalizedPath($data['givenPath'], $base);
