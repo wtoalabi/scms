@@ -1,12 +1,12 @@
 <?php
-  
+
   namespace App\Console\Commands;
-  
+
   use Illuminate\Console\Command;
   use App\EntitySetup\ScaffoldCommand;
   use Illuminate\Filesystem\Filesystem;
   use Illuminate\Support\Str;
-  
+
   class EntityScafold extends Command
   {
     /**
@@ -20,7 +20,7 @@
     ;
     protected $name = "Entity Scaffold";
     protected $entityName;
-    
+
     /**
      * The console command description.
      *
@@ -31,7 +31,7 @@
      * @var Filesystem
      */
     private $file;
-    
+
     /**
      * Create a new command instance.
      *
@@ -43,7 +43,7 @@
       $this->command = $command;
       $this->file = $file;
     }
-    
+
     /**
      * Execute the console command.
      *
@@ -56,7 +56,7 @@
       $this->putInSession($name, $options);
       $this->command->setUp();
     }
-    
+
     private function putInSession($incomingName, $options) {
       $name = $this->normalize(Str::singular($incomingName));
       $path = $this->normalize($options['path']);
@@ -74,7 +74,7 @@
         'file' => $this->file,
       ]);
     }
-    
+
     private function setPath($customPath, $basePath) {
       if($customPath){
         $this->preferredPath = $customPath;
@@ -82,12 +82,13 @@
       }
       return $basePath;
     }
-    private function generateNamespace($path, $basePath){
-      if($path){
-        $basePath .= "\\{$path}";
+      private function generateNamespace($path, $basePath){
+          $namespace = str_replace('/', "\\", $basePath);
+          if($path){
+              $namespace .= "\\{$path}";
+          }
+          return $namespace;
       }
-      return $basePath;
-    }
     private function generateModel($name,$model) {
       $modelName = $name;
       if($model){
