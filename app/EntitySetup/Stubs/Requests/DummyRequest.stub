@@ -1,7 +1,7 @@
 <?php
 
 namespace Path\Dummies\Requests;
-use App\Shop\Base\BaseFormRequest;
+use Path\Base\BaseFormRequest;
 
 class ActionDummyFormRequest extends BaseFormRequest
 {
