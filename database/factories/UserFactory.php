@@ -20,9 +20,12 @@
     $factory->define(User::class, function (Faker $faker) {
         return [
             'name' => $faker->name,
-            'email' => $faker->unique()->safeEmail,
+            'email' => $faker->unique()->companyEmail,
             'email_verified_at' => now(),
             'approved' => false,
+            'phone' => $faker->phoneNumber,
+            'address' => $faker->address,
+            'companyName' => $faker->company,
             'password' => bcrypt('abc123'),
             'remember_token' => Str::random(10),
         ];

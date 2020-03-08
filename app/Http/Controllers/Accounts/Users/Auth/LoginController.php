@@ -28,7 +28,7 @@
       }
       //$this->logoutAllPreexistingLogins();
       if ($this->attemptLogin($request)) {
-          //auth('user')->user()->generateLoginActivity();
+          auth('user')->user()->generateLoginActivity();
         return $this->sendLoginResponse($request);
       }
       $this->incrementLoginAttempts($request);
@@ -62,7 +62,6 @@
 
           $request->session()->regenerateToken();
           if ($response = $this->loggedOut($request)) {
-              dd("dede");
               return $response;
           }
 

@@ -57,7 +57,7 @@ body {
 
 .button {
     margin: 5px 0;
-    background-color: #6d0f3b;
+    background-color: #1565bf;
     color: white;
     border: none;
     border-radius: 5px;
@@ -70,8 +70,8 @@ body {
     line-height: 35px;
     outline: none;
     padding: 0.4rem 2.1rem;
-    position: relative;
-    text-decoration: none;
+    /*position: relative;
+    text-decoration: none;*/
 }
 
 .action {

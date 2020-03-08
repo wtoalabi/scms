@@ -8,7 +8,7 @@
 
     use Illuminate\Support\Facades\Route;
 
-    Route::domain('account.scms.loc')->middleware('web')->group(function () {
+    Route::domain('account.scms.loc')->middleware('user')->group(function () {
         Route::get('/', function () {
             return view('user.dashboard.index');
         })->name('user_dashboard');

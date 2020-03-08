@@ -1,6 +1,7 @@
 <?php
 
     use App\Platform\Accounts\Users\User;
+    use App\Platform\Base\Authorization\Role;
     use Illuminate\Database\Seeder;
     use Faker\Factory as Faker;
 
@@ -12,30 +13,20 @@
          * @return void
          */
         public function run() {
+            $userRoleID = Role::where('title', 'User')->first()->id;
             $count = 20;
             $faker = Faker::create();
-            factory(User::class)->create([
-              'email' => 'u@u.com',
-              'approved' => true,
-            ]);
-
-            while ($count > 0) {
-                $count--;
-                factory(User::class)->create();
+            {
+                $user = factory(User::class)->create([
+                    'email' => 'u@u.com',
+                    'approved' => true,
+                ]);
+                $user->roles()->attach($userRoleID);
             }
-            /*$users = User::all()->shuffle();
-
-            $users->each(function ($user){
-                factory(Phone::class, rand(1, 2))->create([
-                    'phoneable_id' => $user->id,
-                    'phoneable_type' => get_class($user)
-                ]);
-
-                factory(Address::class, rand(1,2))->create([
-                    'addressable_id' => $user->id,
-                    'addressable_type' => get_class($user)
-                ]);
-            });*/
-
+            while ($count > 0) {
+                $user = factory(User::class)->create();
+                $user->roles()->attach($userRoleID);
+                $count--;
+            }
         }
     }
