@@ -14,11 +14,11 @@
       $data = session('data');
       ScaffoldCommand::makeDirectory("{$data['pathName']}//{$data['pluralizedName']}");
       ScaffoldCommand::makeDirectory("{$data['pathName']}//{$data['pluralizedName']}/Requests");
-      ScaffoldCommand::makeDirectory("{$data['pathName']}{$data['pluralizedName']}/Policies");
+      ScaffoldCommand::makeDirectory("{$data['pathName']}//{$data['pluralizedName']}/Policies");
       ScaffoldCommand::makeDirectory("{$data['pathName']}//{$data['pluralizedName']}/Rules");
       ScaffoldCommand::makeDirectory("{$data['pathName']}//{$data['pluralizedName']}/Repositories");
-      ScaffoldCommand::makeDirectory("{$data['pathName']}/{$data['pluralizedName']}/Resources");
-      ScaffoldCommand::makeDirectory("{$data['pathName']}/{$data['pluralizedName']}/Exceptions");
+      ScaffoldCommand::makeDirectory("{$data['pathName']}//{$data['pluralizedName']}/Resources");
+      ScaffoldCommand::makeDirectory("{$data['pathName']}//{$data['pluralizedName']}/Exceptions");
       //ScaffoldCommand::makeDirectory("{$data['pathName']}/{$data['pluralizedName']}/Repositories/Interfaces");
       static::createBaseFolders($data);
       $data['command']->info('Folder structure for ' . $data['pluralizedName'] . ' created.');
