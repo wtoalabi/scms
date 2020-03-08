@@ -41,7 +41,7 @@
 
     private static function stub(string $destination, $data) {
       $dummyModel = '';
-      $destinationFile = "$destination//{$data['name']}Policy";
+      $destinationFile = "$destination\\{$data['name']}Policy";
       $source = app_path('EntitySetUp/Stubs/Policies/DummyPolicy.stub');
       $dummyContent = $data['file']->get($source);
       $policyContent = str_replace(['Dummy', 'Dummies', 'DUMMY','Path','Main', 'dummy', 'DummyModel'],
