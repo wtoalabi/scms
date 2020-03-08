@@ -8,8 +8,6 @@ use RequestNamespace\UpdateDummyFormRequest;
 class DummiesController extends Controller
 {
 
-  private $dummyRepo;
-
     public function index(){
         //
     }

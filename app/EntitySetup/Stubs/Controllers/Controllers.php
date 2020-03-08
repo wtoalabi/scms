@@ -32,7 +32,7 @@
                 ScaffoldCommand::makeDirectory($namespace);
             }
         }
-        
+
         protected static function getRepositoryContent(){
             $data = static::$data;
             $controllerNamespace = "App\\Http\\Controllers\\" .Str::plural($data['name']);
