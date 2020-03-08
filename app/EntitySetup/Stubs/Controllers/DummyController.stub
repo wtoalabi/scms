@@ -5,15 +5,11 @@ namespace controllerNamespace;
 use App\Http\Controllers\Controller;
 use RequestNamespace\CreateDummyFormRequest;
 use RequestNamespace\UpdateDummyFormRequest;
-use RepositoryNamespace;
 class DummiesController extends Controller
 {
 
   private $dummyRepo;
 
-  public function __construct(DummyRepositoryInterface $repo){
-        $this->dummyRepo = $repo;
-  }
     public function index(){
         //
     }
