@@ -25,10 +25,11 @@
         }
 
         private static function CreateResource($data, $content, $name = "") {
-            $path = "{$data['namespace']}\\{$data['pluralizedName']}\Resources";
+            $path = "{$data['pathName']}/{$data['pluralizedName']}/Resources";
+            $namespace = "{$data['namespace']}\\{$data['pluralizedName']}\Resources";
             $resourceContent = str_replace(['Namespace', 'Dummies', 'Dummy', 'dummy'],
-                ["$path;", $data['pluralizedName'], $data['name'], Str::lower($data['name'])], $content);
-            $data['file']->put("$path\\$name.php", $resourceContent);
+                ["$namespace;", $data['pluralizedName'], $data['name'], Str::lower($data['name'])], $content);
+            $data['file']->put("$path/$name.php", $resourceContent);
         }
 
     }
