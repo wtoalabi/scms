@@ -195,5 +195,5 @@ return [
     */
 
     'same_site' => 'lax',
-
+    'entity_base_path' => 'App\Platform'
 ];
