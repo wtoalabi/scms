@@ -1,0 +1,24 @@
+<?php
+
+namespace Path\Dummies\Policies;
+
+use Main\Base\BasePolicy;
+
+class DummyPolicy extends BasePolicy
+{
+
+    public function create (){
+        return $this->approve('ADD_DUMMY');
+    }
+    public function view (){
+        return $this->approve('VIEW_DUMMY');
+    }
+
+    public function update (){
+        return $this->approve('UPDATE_DUMMY');
+    }
+
+    public function delete (){
+        return $this->approve('DELETE_DUMMY');
+    }
+}

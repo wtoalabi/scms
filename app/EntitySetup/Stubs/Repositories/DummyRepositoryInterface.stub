@@ -1,0 +1,19 @@
+<?php
+
+  namespace Path\Dummies\Repositories\Interfaces;
+
+  use Main\Base\BaseRepositoryInterface;
+
+   interface DummyRepositoryInterface extends BaseRepositoryInterface {
+
+    public function list();
+
+    public function find($id);
+
+    public function create($id);
+
+    public function update($data);
+
+    public function delete($id);
+
+  }

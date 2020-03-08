@@ -1,0 +1,37 @@
+<?php
+
+namespace Path\Dummies\Policies;
+use Path\Dummies\Dummy;
+use Main\Base\BasePolicy;
+
+class DummyPolicy extends BasePolicy
+{
+
+    public function create() {
+      if ($this->hasPermissionTo('ADD_DUMMY')) {
+          return true;
+      }
+    }
+
+    public function view() {
+         return $this->hasPermissionTo('VIEW_DUMMY');
+        }
+
+    public function update (){
+         $dummy = Dummy::find(request()->all()['id']);
+         if ($this->hasPermissionTo('UPDATE_DUMMY')) {
+           /*if($this->isTheVerifiedOwnerWith($dummy)){
+                return true;
+           }*/
+         }
+    }
+
+    public function delete (){
+        $dummy = Dummy::find(request()->all()['id']);
+         if ($this->hasPermissionTo('DELETE_DUMMY')) {
+           /*if($this->isTheVerifiedOwnerWith($dummy)){
+                 return true;
+            }*/
+         }
+    }
+}

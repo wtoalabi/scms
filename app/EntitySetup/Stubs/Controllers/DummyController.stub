@@ -1,0 +1,44 @@
+<?php
+
+namespace controllerNamespace;
+
+use App\Http\Controllers\Controller;
+use RequestNamespace\CreateDummyFormRequest;
+use RequestNamespace\UpdateDummyFormRequest;
+use RepositoryNamespace;
+class DummiesController extends Controller
+{
+
+  private $dummyRepo;
+
+  public function __construct(DummyRepositoryInterface $repo){
+        $this->dummyRepo = $repo;
+  }
+    public function index(){
+        //
+    }
+
+    public function create(){
+        //
+    }
+
+    public function store(CreateDummyFormRequest $form){
+        //
+    }
+
+    public function show(){
+        //
+    }
+
+    public function edit(){
+        //
+    }
+
+    public function update(UpdateDummyFormRequest $form){
+        //
+    }
+
+    public function destroy(){
+        //
+    }
+}

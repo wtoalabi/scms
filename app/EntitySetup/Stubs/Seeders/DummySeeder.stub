@@ -1,0 +1,19 @@
+<?php
+
+  use Namespace;
+  use Faker\Factory as Faker;
+  use Illuminate\Database\Seeder;
+
+class DummiesSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+      $faker = Faker::create();
+      factory(Dummy::class)->create();
+    }
+}

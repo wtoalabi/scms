@@ -1,0 +1,13 @@
+<?php
+
+namespace Main\Base;
+
+  interface BaseRepositoryInterface
+  {
+
+    public function list ();
+    public function find ($id) ;
+    public function create ($data);
+    public function update($data) ;
+    public function delete($id);
+  }

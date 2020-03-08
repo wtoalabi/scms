@@ -1,0 +1,37 @@
+<?php
+
+  namespace Path\Dummies\Repositories;
+
+    use Path\Dummies\Dummy;
+    use Path\Dummies\Resources\DummyResource;
+    use Path\Dummies\Resources\DummyCollection;
+    use Path\Dummies\Repositories\Interfaces\DummyRepositoryInterface;
+
+   class DummyRepository implements DummyRepositoryInterface {
+   protected $dummy;
+
+    public function __construct(Dummy $dummy){
+        $this->dummy = $dummy;
+    }
+
+    public function list(): DummyCollection{
+      //TODO
+    }
+
+
+    public function find($id) : DummyResource {
+      //TODO
+    }
+
+    public function create($data) : DummyResource{
+      //TODO
+    }
+
+    public function update($data) : DummyResource{
+      //TODO
+    }
+
+    public function delete($id) :bool{
+      //TODO
+    }
+  }

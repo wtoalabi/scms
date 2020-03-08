@@ -8,7 +8,7 @@
 
     use Illuminate\Support\Facades\Route;
     use Illuminate\Support\Facades\Redis;
-    
+
     Route::domain('account.scms.loc')->middleware('user')->group(function () {
         Route::get('/', function () {
             return view('user.dashboard.index');

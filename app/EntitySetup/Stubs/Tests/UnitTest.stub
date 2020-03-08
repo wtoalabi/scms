@@ -1,0 +1,19 @@
+<?php
+
+namespace Tests\Unit\Path;
+
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\UnitTestCase;
+
+class DummyTests extends UnitTestCase
+{
+    /**
+     * A basic unit test example.
+     * @test
+     * @return void
+     */
+    public function dummyTest()
+    {
+        $this->assertTrue(true);
+    }
+}

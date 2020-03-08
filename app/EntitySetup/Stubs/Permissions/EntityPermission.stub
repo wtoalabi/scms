@@ -1,0 +1,38 @@
+<?php
+use Illuminate\Database\Seeder;
+use PermissionModel;
+
+class DummyPermissionSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        factory(Permission::class)->create([
+            'ability' => 'VIEW_DUMMY',
+            'model'=> 'Dummy',
+            'description' => 'View Dummies.'
+        ]);
+
+        factory(Permission::class)->create([
+            'ability' => 'ADD_DUMMY',
+            'model'=> 'Dummy',
+            'description' => 'Add new Dummies.'
+        ]);
+
+        factory(Permission::class)->create([
+            'ability' => 'UPDATE_DUMMY',
+            'model'=> 'Dummy',
+            'description' => 'Edit Dummies.'
+        ]);
+
+        factory(Permission::class)->create([
+            'ability' => 'DELETE_DUMMY',
+            'model'=> 'Dummy',
+            'description' => 'Delete Dummies.'
+        ]);
+    }
+}
