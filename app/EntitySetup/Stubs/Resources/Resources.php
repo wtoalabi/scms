@@ -28,7 +28,7 @@
             $path = "{$data['namespace']}\\{$data['pluralizedName']}\Resources";
             $resourceContent = str_replace(['Namespace', 'Dummies', 'Dummy', 'dummy'],
                 ["$path;", $data['pluralizedName'], $data['name'], Str::lower($data['name'])], $content);
-            $data['file']->put("$path/$name.php", $resourceContent);
+            $data['file']->put("$path\\$name.php", $resourceContent);
         }
 
     }
