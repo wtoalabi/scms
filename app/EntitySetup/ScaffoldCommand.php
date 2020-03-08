@@ -30,7 +30,7 @@
     private function runCommands() {
       Tests::SetUp();
       Folders::SetUp();
-      Permissions::SetUp();
+      //Permissions::SetUp();
       //Providers::SetUp();
       //Repositories::Setup();
       //Requests::SetUp();
