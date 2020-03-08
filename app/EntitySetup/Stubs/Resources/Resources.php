@@ -16,7 +16,6 @@
         public static function SetUp() {
             $data = session('data');
             $path = "{$data['pathName']}/{$data['pluralizedName']}/Resources";
-            dd($path);
             ScaffoldCommand::makeDirectory($path);
             $dummyCollection = $data['file']->get("App/EntitySetup/Stubs/Resources/DummyCollection.stub");
             $dummyResource = $data['file']->get("App/EntitySetup/Stubs/Resources/DummyResource.stub");
