@@ -25,7 +25,6 @@
       $testName = base_path("tests\\{$test}TestCase.php");
       if(!$data['file']->exists($testName)) {
         $dummyResource = $data['file']->get("App/EntitySetup/Stubs/Tests/{$test}TestCase.stub");
-        dd($dummyResource);
         $data['file']->put($testName, $dummyResource);
       }
 
@@ -37,7 +36,7 @@
       $namespace = ScaffoldCommand::NormalizedPath($data['givenPath'], $data['pluralizedName']);
       $filePath = "{$normalizedPath}\\{$data['pluralizedName']}\\{$data['name']}{$test}Test.php";
       ScaffoldCommand::makeDirectory("$normalizedPath\\{$data['pluralizedName']}");
-      $dummyContent = $data['file']->get("App\EntitySetup\Stubs\Tests\\{$test}Test.stub");
+      $dummyContent = $data['file']->get("App/EntitySetup/Stubs/Tests/{$test}Test.stub");;
       $testContent = str_replace(['Path', 'Dummy','dummy'], [$namespace, $data['name'], Str::lower($data['name'])], $dummyContent);
       $data['file']->put($filePath, $testContent);
     }
