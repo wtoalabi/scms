@@ -48,11 +48,13 @@
             );
             ScaffoldCommand::makeDirectory("$destination");
             $data['file']->put("$destinationFile.php", $policyContent);
-            static::RegisterPolicies($destinationFile, $data);
+            static::RegisterPolicies($data);
 
         }
 
-        private static function RegisterPolicies($destinationFile, $data) {
+        private static function RegisterPolicies($data) {
+            $destinationFile =
+                "{$data['namespace']}\\".Str::plural($data['name']) . "\Policies" ."\\".$data['name']."Policy";
             $path = app_path('Providers/AuthServiceProvider.php');
             FileEditor::Write(policiesArrayLine(), newPolicyItem($data), $path);
             FileEditor::Write(policiesImportLocation(), policyImportStatements($data, $destinationFile), $path);
