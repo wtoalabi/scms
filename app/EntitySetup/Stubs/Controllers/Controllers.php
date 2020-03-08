@@ -20,7 +20,7 @@
             static::$data = $data = session('data');
             $path = $data['givenPath'] ? "{$data['givenPath']}\\":'';
             $controllerNamespace = self::getControllerNamespace($path);
-            $repositoryContent = self::getRepositoryContent($controllerNamespace);
+            $repositoryContent = self::getRepositoryContent();
             static::createPathIfNotExisting($controllerNamespace);
             self::createController($controllerNamespace, $repositoryContent);
             $data['command']->info('Resourceful Controller for ' . $data['pluralizedName'] . ' has been created.');
@@ -32,9 +32,10 @@
                 ScaffoldCommand::makeDirectory($namespace);
             }
         }
-
-        protected static function getRepositoryContent(string $controllerNamespace){
+        
+        protected static function getRepositoryContent(){
             $data = static::$data;
+            $controllerNamespace = "App\\Http\\Controllers\\" .Str::plural($data['name']);
             $modelName = "{$data['namespace']}\\{$data['pluralizedName']}\Requests";
             $repositoryNamespace = self::getRepositoryNamespace();
             $dummyContent = self::getDummyContent();
