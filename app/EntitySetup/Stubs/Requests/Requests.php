@@ -36,7 +36,7 @@
 
     private static function stub(string $destination, $action,$data) {
 
-      $destinationFile = "$destination$action{$data['name']}FormRequest.php";
+      $destinationFile = "$destination/$action{$data['name']}FormRequest.php";
       ScaffoldCommand::makeDirectory("$destination");
       $source = app_path('EntitySetUp/Stubs/Requests/DummyRequest.stub');
       $dummyContent = $data['file']->get($source);
