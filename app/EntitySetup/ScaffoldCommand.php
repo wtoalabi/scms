@@ -36,7 +36,7 @@
       Requests::SetUp();
       Exceptions::SetUp();
       Policies::SetUp();
-      //Controllers::SetUp();
+      Controllers::SetUp();
       //Seeders::SetUp();
       //Resources::SetUp();
       $this->createModel();
