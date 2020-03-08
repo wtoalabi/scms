@@ -35,7 +35,7 @@
       //Repositories::Setup();
       Requests::SetUp();
       Exceptions::SetUp();
-      //Policies::SetUp();
+      Policies::SetUp();
       //Controllers::SetUp();
       //Seeders::SetUp();
       //Resources::SetUp();
