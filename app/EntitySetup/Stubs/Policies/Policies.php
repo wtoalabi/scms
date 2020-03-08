@@ -54,7 +54,7 @@
     }
 
     private static function RegisterPolicies($destinationFile, $data) {
-      $path = app_path('Providers\AuthServiceProvider.php');
+      $path = app_path('Providers/AuthServiceProvider.php');
       FileEditor::Write(policiesArrayLine(), newPolicyItem($data), $path);
       FileEditor::Write(policiesImportLocation(), policyImportStatements($data, $destinationFile), $path);
     }
