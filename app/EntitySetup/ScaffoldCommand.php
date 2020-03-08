@@ -31,14 +31,14 @@
       Tests::SetUp();
       Folders::SetUp();
       Permissions::SetUp();
-      Providers::SetUp();
+      //Providers::SetUp();
       //Repositories::Setup();
-      Requests::SetUp();
-      Exceptions::SetUp();
-      Policies::SetUp();
-      Controllers::SetUp();
-      Seeders::SetUp();
-      Resources::SetUp();
+      //Requests::SetUp();
+      //Exceptions::SetUp();
+      //Policies::SetUp();
+      //Controllers::SetUp();
+      //Seeders::SetUp();
+      //Resources::SetUp();
       $this->createModel();
       session('data')['command']->info('All scafolding created Successfully!');
     }
