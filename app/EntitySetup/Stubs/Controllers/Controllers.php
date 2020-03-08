@@ -48,7 +48,7 @@
 
         protected static function getControllerNamespace(string $path) {
             $data = static::$data;
-            $controllerNamespace = "App\Http\Controllers\\{$path }{$data['pluralizedName']}";
+            $controllerNamespace = "App/Http/Controllers/{$data['pluralizedName']}";
             return $controllerNamespace;
         }
 
@@ -67,6 +67,6 @@
 
         protected static function createController(string $controllerNamespace, $repositoryContent): void {
             $data = static::$data;
-            $data['file']->put("{$controllerNamespace}\\{$data['pluralizedName']}Controller.php", $repositoryContent);
+            $data['file']->put("{$controllerNamespace}//{$data['pluralizedName']}Controller.php", $repositoryContent);
         }
     }
