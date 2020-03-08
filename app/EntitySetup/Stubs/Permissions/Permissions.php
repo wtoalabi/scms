@@ -33,20 +33,20 @@
     }
 
     private static function createSetUpFile($data) {
-      $nameInFull = "SetUps\\PermissionsSetup";
+      $nameInFull = "SetUps//PermissionsSetup";
       $data['command']->callSilent('make:seeder', ['name' => $nameInFull]);
     }
 
     private static function CreatePermissionsFolder() {
-      ScaffoldCommand::makeDirectory(database_path("seeds\Authorization\Permissions"));
+      ScaffoldCommand::makeDirectory(database_path("seeds/Authorization/Permissions"));
     }
 
 
     private static function CreatePermissionSeedForEntity() {
       $data = session('data');
-      $dummyContent = $data['file']->get('App\EntitySetUp\Stubs\Permissions\EntityPermission.stub');
-      $permissionModelLocation = "{$data['base']}\\Base\Authorization\Permission";
-      $destinationPath = database_path("seeds\Authorization\Permissions\\{$data['name']}PermissionsSeeder.php");
+      $dummyContent = $data['file']->get('App/EntitySetUp/Stubs/Permissions/EntityPermission.stub');
+      $permissionModelLocation = "{$data['base']}//Base/Authorization/Permission";
+      $destinationPath = database_path("seeds/Authorization/Permissions//{$data['name']}PermissionsSeeder.php");
       $repositoryContent = str_replace(
         ['Dummy', 'Dummies', 'DUMMY', 'PermissionModel',],
         [
@@ -68,7 +68,7 @@
 
     private static function RegisterEntityPermissionSeeder($data) {
       $newString = '      $this->call('. "{$data['name']}PermissionSeeder::class);";
-      $destinationPath = database_path("seeds\SetUps\PermissionsSetup.php");
+      $destinationPath = database_path("seeds/SetUps/PermissionsSetup.php");
       FileEditor::Write("//", $newString, $destinationPath);
     }
   }
