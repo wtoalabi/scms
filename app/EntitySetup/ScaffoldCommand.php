@@ -38,7 +38,7 @@
       Policies::SetUp();
       Controllers::SetUp();
       Seeders::SetUp();
-      //Resources::SetUp();
+      Resources::SetUp();
       $this->createModel();
       session('data')['command']->info('All scafolding created Successfully!');
     }
