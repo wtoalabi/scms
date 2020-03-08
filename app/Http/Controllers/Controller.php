@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Platform\Accounts\Admins\Admin;
 use App\Platform\Accounts\Users\User;
+use App\Platform\Base\Helpers\Authenticated;
+use Illuminate\Auth\Authenticatable;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
@@ -40,7 +43,7 @@ class Controller extends BaseController
         return true;
     }
     protected function generatePasswordResetActivity(Request $request, string $authModel) {
-        $user = $this->getUserByEmail($request, $authModel);
+        $user = $thßis->getUserByEmail($request, $authModel);
         if($user){
             $user->generatePasswordRequestActivity($user);
         }

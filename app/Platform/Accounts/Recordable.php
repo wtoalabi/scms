@@ -4,19 +4,20 @@
      * Date: 6/13/2019
      */
     declare(strict_types=1);
-    
+
     namespace App\Platform\Accounts;
-    
+
     use App\Platform\Base\Activities\Activity;
+    use App\Platform\Base\Authorization\Role;
     use App\Platform\Base\Helpers\Authenticated;
     use Illuminate\Support\Str;
-    
+
     trait Recordable
     {
         public function activities() {
             return $this->hasMany(Activity::class,'actor_id');
         }
-        
+
         /*$subjectModel comes in as the model of the actionable model. For instance, Address::class
         $subjectName comes in as the exact name of the subject...for instance: Nissam Micra 202
         or 2, Adewale Street, Garki, Abuja. We need this to be appended to the message string.
@@ -32,7 +33,7 @@
                 Activity::Record($subjectModel, $message, "CREATED", $customDetail);
             }
         }
-        
+
         /**
          * @param $subject . The subject with the updated values.
          * @param $oldSubject . The subject with the old values.
@@ -54,7 +55,7 @@
                 Activity::Record($subject, $message, "UPDATED", $details);
             }
         }
-        
+
         public function generateDeletedActivity($subject, $actionName, $actionType = "", $customMessage = "", $details = []) {
             if ($customMessage) {
                 return Activity::Record($subject, $customMessage, "DELETED", $details);
@@ -64,7 +65,7 @@
                 return Activity::Record($subject, $message, "DELETED", $details);
             }
         }
-        
+
         /**
          *
          */
@@ -82,7 +83,7 @@
             $activity->modifications = null;
             $activity->save();
         }
-        
+
         /**
          *
          */
@@ -101,7 +102,7 @@
             $activity->modifications = null;
             $activity->save();
         }
-        
+
         /**
          *
          */
@@ -119,7 +120,7 @@
             $activity->modifications = null;
             $activity->save();
         }
-        
+
         /**
          *
          */
@@ -143,7 +144,7 @@
               $activity->save();
           }
         }
-        
+
         /**
          * @param $new : a modelObject.
          * @param $old : model

@@ -7,12 +7,14 @@
      */
 
     use Illuminate\Support\Facades\Route;
-
+    use Illuminate\Support\Facades\Redis;
+    
     Route::domain('account.scms.loc')->middleware('user')->group(function () {
         Route::get('/', function () {
             return view('user.dashboard.index');
         })->name('user_dashboard');
     });
+
 
     Route::post('/user_logout', 'Accounts\Users\Auth\LoginController@logout')->name('user_logout');
 
