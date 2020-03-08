@@ -33,7 +33,7 @@
       Permissions::SetUp();
       //Providers::SetUp();
       //Repositories::Setup();
-      //Requests::SetUp();
+      Requests::SetUp();
       //Exceptions::SetUp();
       //Policies::SetUp();
       //Controllers::SetUp();
