@@ -57,7 +57,7 @@
 
     private static function CreatePermissionModel($data) {
       if(!$data['file']->exists("{$data['base']}/Base/Authorization/Permission.php")) {
-        $fullModelName = "{$data['base']}//Base/Authorization/Permission";
+        $fullModelName = "{$data['base']}/Base/Authorization/Permission";
         $data['command']->call('make:model', [
           'name' => $fullModelName,
           '--migration' => $data['command']->options('migration'),
