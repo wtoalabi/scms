@@ -2,9 +2,8 @@
 
 namespace App\Platform\Contacts;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Platform\Base\BaseModel;
 
-class Contact extends Model
-{
+class Contact extends BaseModel {
     //
 }

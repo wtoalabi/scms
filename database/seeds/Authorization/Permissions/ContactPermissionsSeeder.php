@@ -1,6 +1,7 @@
 <?php
-use Illuminate\Database\Seeder;
-use App/Platform/Base/Authorization/Permission;
+
+    use App\Platform\Base\Authorization\Permission;
+    use Illuminate\Database\Seeder;
 
 class ContactPermissionSeeder extends Seeder
 {

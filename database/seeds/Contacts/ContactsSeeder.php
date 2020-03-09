@@ -14,6 +14,6 @@ class ContactsSeeder extends Seeder
     public function run()
     {
       $faker = Faker::create();
-      factory(Contact::class)->create();
+      factory(Contact::class,20)->create();
     }
 }

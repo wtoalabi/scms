@@ -7,6 +7,11 @@ use Faker\Generator as Faker;
 
 $factory->define(Contact::class, function (Faker $faker) {
     return [
-        //
+        'first_name' => $faker->firstName,
+        'last_name' => $faker->lastName,
+        'email' => $faker->email,
+        'birthday' => $faker->dateTimeBetween('-50 years', '-20 years'),
+        'dateAdded' => $faker->dateTimeBetween('-12 months', '-2 months'),
+        'address' => $faker->address
     ];
 });
