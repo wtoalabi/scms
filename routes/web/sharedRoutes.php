@@ -15,6 +15,6 @@
         //Route::post('/admin_logout','Accounts\Admins\Auth\LoginController@logout')->name('admin_logout');
     });
 
-    Route::domain('scms.loc')->middleware('admin_user')->group(function () {
-
+    Route::domain('{route}.scms.loc')->middleware('admin_user')->group(function () {
+        Route::post('contacts','Contacts\ContactsController@index');
     });

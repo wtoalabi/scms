@@ -4,18 +4,18 @@
      * Date: 8/13/2019
      */
     declare(strict_types=1);
-    
+
     namespace App\Platform\Base\Helpers\Collections;
-    
-    
+
+
     use App\Platform\Base\Helpers\Date\FormatTime;
     use App\Platform\Store\Categories\Category;
     use Carbon\Carbon;
-    
+
     trait CustomQuery
     {
         protected $queryBuilder;
-        
+
         public function scopeFilterQuery($query) {
             $this->queryBuilder = $query;
             $requests = collect(request()->all())->filter();
@@ -27,14 +27,14 @@
             //dd($this->queryBuilder->count());
             return $this->queryBuilder->orderQuery();
         }
-        
+
         public function scopeOrderQuery($query) {
             $request = request('queryPagination');
-            $this->limit_to_merchant($query);
+            //$this->limit_to_active_users($query);
             return $query->orderBy($request['sortBy'] ?? 'created_at', $request['sortDirection']
                 ?? 'desc')->paginate($request['rowsPerPage'] ?? 10);
         }
-        
+
         public function searchMultipleColumns($searchArray) {
             $searchColumns = $searchArray[0];
             $searchText = $searchArray[1];
@@ -46,7 +46,7 @@
             }
             return $this->queryBuilder;
         }
-        
+
         public function filterBySearch($searchArray) {
             $searchColumn = $searchArray[0];
             $searchText = $searchArray[1];
@@ -55,7 +55,7 @@
             }
             return $this->queryBuilder;
         }
-        
+
         public function filterByDate($dateArray) {
             if ($dateArray) {
                 $from = $dateArray['fromDate'];
@@ -68,7 +68,7 @@
             }
             return $this->queryBuilder;
         }
-        
+
         public function filterByColumn($queryArray) {
             if ($queryArray) {
                 collect($queryArray)->each(function ($each) {
@@ -82,7 +82,7 @@
             }
             return $this->queryBuilder;
         }
-        
+
         public function filterByRelationship($relationshipArray) {
             collect($relationshipArray)->values()->each(function ($relationship) {
                 list($table, $column, $value) = $relationship;
@@ -95,18 +95,18 @@
             });
             return $this->queryBuilder;
         }
-        
+
         public static function PaginatedCollection($collection) {
             return [
                 'data' => $collection,
                 'pagination' => Pagination::Get($collection)
             ];
         }
-    
-        public function limit_to_merchant($query) {
-            $merchant = auth('merchant')->user();
-            if($merchant){
-                $query->where('merchant_id',$merchant->id);
+
+        public function limit_to_active_users($query) {
+            $user = auth('user')->user();
+            if($user){
+                $query->where('merchant_id',$user->id);
             }
             return $query;
         }

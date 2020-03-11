@@ -10,8 +10,9 @@ $factory->define(Contact::class, function (Faker $faker) {
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
         'email' => $faker->email,
-        'birthday' => $faker->dateTimeBetween('-50 years', '-20 years'),
+        'birthday' => ['day' => 13, 'month' => 10],
         'dateAdded' => $faker->dateTimeBetween('-12 months', '-2 months'),
         'address' => $faker->address
     ];
 });
+

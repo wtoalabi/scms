@@ -1,6 +1,7 @@
 import lodash from './utils/lodash';
+import globals from '../js/utils/GlobalStates'
 window._ = lodash;
-
+window._globals = globals;
 require("./utils/Filters/GlobalFilters");
 Vue.config.productionTip = false;
 window.axios = require('axios');

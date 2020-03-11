@@ -1,6 +1,7 @@
 import default_state from "./utils/default_state";
 export default{
     ...default_state,
+    contacts:[],
     user: {
         role: {
             permissions:[

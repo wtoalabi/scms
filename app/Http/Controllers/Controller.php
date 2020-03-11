@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Platform\Accounts\Admins\Admin;
 use App\Platform\Accounts\Users\User;
 use App\Platform\Base\Helpers\Authenticated;
+use App\Platform\Contacts\Contact;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -15,6 +16,15 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    public function list($model) {
+        if (request()->all()) {
+            $result = $model::filterQuery();
+        } else {
+            $result = $model::orderQuery();
+        }
+        return $result;
+    }
     public function logoutAllPreexistingLogins() {
         request()->session()->invalidate();
     }
@@ -64,7 +74,8 @@ class Controller extends BaseController
         }
         $collection = new $modelCollection($orderedObjects);
         $data = $model::PaginatedCollection($collection);
-        return response(['data' => $data, 'message' => $message], 200);
+        $data['message'] = $message;
+        return response(['response' => $data], 200);
 
     }
 

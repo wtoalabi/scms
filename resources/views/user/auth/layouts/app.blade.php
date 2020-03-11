@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{$title}} | {{ config('app.name', 'Afrobarter') }}</title>
+    <title>{{$title}} | {{ config('app.name', 'SCMS') }}</title>
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/landing/user_landing.css') }}" rel="stylesheet">
 </head>

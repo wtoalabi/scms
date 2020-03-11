@@ -3,7 +3,7 @@
         <v-list-item
             v-if="userCan('VIEW_CONTACTS')"
             key="contacts"
-            to="/contacts"
+            to="/contacts/list"
             link
         >
             <v-list-item-action>
