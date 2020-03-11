@@ -1,4 +1,5 @@
 import Errors from "./Errors";
+
 let errors = new Errors;
 export default async function Request(url, {
     data = {},
@@ -15,13 +16,14 @@ export default async function Request(url, {
     load = true,
 } = {}) {
     store.commit("startLoading");
-    await axios[action](url,data).then(response=>{
+    if (action !== 'get') {
+        let extraData = store.state.mergeAllQueries();
+        data = {...extraData, ...data}
+    }
+    await axios[action](url, data).then(response => {
         store.commit(mutator, response.data.response);
-        setTimeout(()=>{
-            //store.commit("requestIsSuccessful");
-            return store.commit("stopLoading");
-        },1000)
-    }).catch(errorData=>{
+        store.commit("stopLoading")
+    }).catch(errorData => {
         errors.record(errorData.response.data.errors);
         return store.commit("stopLoading", errors.errors)
     })

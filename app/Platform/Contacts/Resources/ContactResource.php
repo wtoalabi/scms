@@ -15,7 +15,7 @@
                 'email' => $this->email,
                 'address' => $this->address,
                 'dateAdded' => (new Carbon($this->dateAdded))->format("d-M-Y"),
-                'birthday' => $this->birthday
+                'birthday' => ['day'=>$this->birthday['day'],'month' =>$this->birthday['month']],
             ];
         }
     }

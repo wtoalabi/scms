@@ -1,5 +1,5 @@
 <script>
-    import {scrollToTop} from '../helpers'
+    import {scrollToTop} from '../helpers/helpers'
   export default {
     data() {
       return {

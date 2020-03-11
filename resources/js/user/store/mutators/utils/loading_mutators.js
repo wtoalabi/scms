@@ -5,5 +5,11 @@ export default {
     setTitle({title}, payload){
         title = payload;
         document.title = `${title} - User Account | SCMS`
-    }
+    },
+    startLoading(state,_){
+        state.loading = true;
+    },
+    stopLoading(state,_){
+        state.loading = false;
+    },
 }

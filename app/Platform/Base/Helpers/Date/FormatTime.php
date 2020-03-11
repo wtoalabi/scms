@@ -49,4 +49,24 @@
           } catch (\Exception $e) {
           }
       }
+
+      public static function GeBirthdayArray($day, $month) {
+          $monthWeight = [
+              1 => 100,
+              2 => 150,
+              3 => 200,
+              4 => 250,
+              5 => 300,
+              6 => 350,
+              7 => 400,
+              8 => 450,
+              9 => 500,
+              10 => 550,
+              11 => 600,
+              12 => 650
+          ];
+          $weight = ($monthWeight[$month] * $month) + ($day);
+          return ['day'=>$day,'month'=>$month, 'weight'=>$weight];
+          /*Contact::all()->sortBy(function($a){return $a->birthday['weight'];})->pluck(['birthday'])*/
+      }
   }

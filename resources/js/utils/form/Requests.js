@@ -1,6 +1,6 @@
 import Errors from './Errors';
 import ErrorMessages from './errorMessages';
-import {scrollToTop} from "../helpers";
+import {scrollToTop} from "../helpers/document";
 
 export default {
     mounted() {
