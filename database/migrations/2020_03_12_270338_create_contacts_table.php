@@ -15,6 +15,7 @@ class CreateContactsTable extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email');
@@ -22,6 +23,7 @@ class CreateContactsTable extends Migration
             $table->integer('dateAdded')->nullable();
             $table->json('birthday')->nullable();
             $table->integer('birthday_weight')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

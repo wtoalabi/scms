@@ -8,6 +8,7 @@
     namespace App\Platform\Base\Helpers\Collections;
 
 
+    use App\Platform\Base\Helpers\Authenticated;
     use App\Platform\Base\Helpers\Date\FormatTime;
     use App\Platform\Store\Categories\Category;
     use Carbon\Carbon;
@@ -32,8 +33,10 @@
             $request = request('queryPagination');
             $sortDesc = $request['sortDesc'] ?? true;
             $sortBy = $request['sortBy'] ?? 'create_at';
-            //$this->limit_to_active_users($query);
-            if($sortBy === 'birthday'){
+            if (request('user_id')) {
+                $this->limit_to_active_users($query);
+            }
+            if ($sortBy === 'birthday') {
                 $sortBy = 'birthday_weight';
             }
             return $query->orderBy($sortBy, $sortDesc
@@ -109,10 +112,6 @@
         }
 
         public function limit_to_active_users($query) {
-            $user = auth('user')->user();
-            if ($user) {
-                $query->where('merchant_id', $user->id);
-            }
-            return $query;
+                return $query->where('user_id', request('user_id'));
         }
     }

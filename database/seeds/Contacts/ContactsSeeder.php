@@ -3,6 +3,7 @@
     use App\Platform\Base\Helpers\Date\FormatTime;
     use App\Platform\Contacts\Contact;
 
+    use App\Platform\Groups\Group;
     use Faker\Factory as Faker;
     use Illuminate\Database\Seeder;
 
@@ -20,7 +21,7 @@
                 factory(Contact::class)->create([
                     'dateAdded' => FormatTime::GetRandomDateStamp(),
                     'birthday' => $birthday,
-                    'birthday_weight' => $birthday_weight
+                    'birthday_weight' => $birthday_weight,
                 ]);
                 $count--;
             }
