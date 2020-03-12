@@ -15,9 +15,26 @@
                   <emails_menu />
                   <sms_menu />
                   <settings_menu />
-                  <theme-changer />
               </template>
           </v-list>
+          <template v-slot:append>
+              <v-divider></v-divider>
+              <theme-changer />
+              <v-list-item
+                  key="logout"
+                  link
+                  @click="logout"
+              >
+                  <v-list-item-action >
+                      <v-icon>mdi-logout</v-icon>
+                  </v-list-item-action>
+                  <v-list-item-content>
+                      <v-list-item-title>
+                          Logout
+                      </v-list-item-title>
+                  </v-list-item-content>
+              </v-list-item>
+          </template>
       </v-navigation-drawer>
   </div>
 </template>
@@ -46,6 +63,11 @@
           drawer: true,
       }
     },
+      methods:{
+        logout(e){
+            this.$store.dispatch('logout',e)
+        }
+      },
     computed: {
           miniDrawer: {
             set: function () {
