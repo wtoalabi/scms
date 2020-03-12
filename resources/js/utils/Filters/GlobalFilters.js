@@ -44,14 +44,14 @@ Vue.filter('getNameFromUrl', function(url){
 });
 
 Vue.filter('truncateThousand', function(value){
-    if(Number.parseInt(value) >=999){
+    if(Number.parseInt(value) >=9999){
         return Math.floor(value/1000) + 'K'
     }
-    return value;
+    return numberInThousand(value);
 });
 
 Vue.filter('numberInThousand', function(number){
-    return number.toLocaleString('en-NG',{minimumFractionDigits: 0});
+    return numberInThousand(number)
 });
 
 Vue.filter('birthdayString', function(birthday){
@@ -82,4 +82,7 @@ let monthsMap  = {
     10: "October",
     11: "November",
     12: "December",
+}
+function numberInThousand(number) {
+    return number.toLocaleString('en-NG',{minimumFractionDigits: 0});
 }

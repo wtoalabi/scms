@@ -5,6 +5,11 @@ export default{
     ...queries_state,
     contacts:[],
     user: {
+        plan:{
+            name: "Free",
+            emailCredit: 3870,
+            smsCredit: 290000
+        },
         role: {
             permissions:[
                 "VIEW_DASHBOARD",

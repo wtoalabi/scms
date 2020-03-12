@@ -9,7 +9,7 @@
         >
             <v-app-bar-nav-icon @click="setDrawer"/>
             <v-toolbar-title
-                style="width:400px"
+                style="width:400px; font-weight: 800"
                 class="ml-0 pl-4"
             >
                 <div @click="goToHome" style="cursor:pointer;">
@@ -18,14 +18,8 @@
                         class="hidden-md-and-up subtitle-2">Simple Contacts Management System</span>
                 </div>
             </v-toolbar-title>
-            <v-text-field
-                flat
-                solo-inverted
-                hide-details
-                prepend-inner-icon="mdi-magnify"
-                label="Search"
-                class="hidden-sm-and-down"
-            />
+            <div class="spacer"></div>
+            <account-snapshot class="hidden-md-and-down"/>
             <v-spacer/>
             <v-btn icon class="hidden-sm-and-down">
                 <v-icon>mdi-bell</v-icon>
@@ -50,10 +44,11 @@
 <script>
     import MenuList from "./Utils/Nav/MenuList";
     import Requests from "../../utils/form/Requests";
+    import AccountSnapshot from "./Utils/AccountSnapshot";
 
     export default {
         mixins: [Requests],
-        components: {MenuList},
+        components: {MenuList, AccountSnapshot},
         props: {
             source: String,
         },
@@ -83,6 +78,7 @@
                 title: `${title} ${title ? '|' : ''} SCMS`
             }
         },
-        computed: {}
+        computed: {
+        }
     }
 </script>
