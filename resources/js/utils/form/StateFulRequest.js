@@ -15,16 +15,20 @@ export default async function Request(url, {
     store = null,
     load = true,
 } = {}) {
-    store.commit("startLoading");
     if (action !== 'get') {
+        store.commit("startLoading");
         let extraData = store.state.mergeAllQueries();
         data = {...extraData, ...data}
     }
     await axios[action](url, data).then(response => {
-        store.commit(mutator, response.data.response);
+        if(mutator){
+            store.commit(mutator, response.data.response);
+        }
         store.commit("stopLoading")
+        onSuccessCallback();
     }).catch(errorData => {
-        errors.record(errorData.response.data.errors);
+       errors.record(errorData.response.data.errors);
+        onErrorCallback()
         return store.commit("stopLoading", errors.errors)
     })
 }

@@ -63,13 +63,7 @@
                 }
             },
             logout(e) {
-                e.preventDefault();
-                this.makeRequest('user_logout',{
-                    action: 'post',
-                    onSuccessCallback: ()=>{
-                        return location.assign("https://scms.loc/login");
-                    }
-                })
+                this.$store.dispatch('logout', e)
             }
         },
         meta() {

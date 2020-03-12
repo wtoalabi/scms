@@ -29,7 +29,7 @@
     },
     computed: {
         themeText(){
-            return this.$vuetify.theme.dark ? "Revert Back to Light Theme" : "Change to Dark Theme"
+            return this.$vuetify.theme.dark ? "Light Theme" : "Dark Theme"
         }
     }
   }
