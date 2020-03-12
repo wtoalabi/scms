@@ -26,7 +26,7 @@
                 :headers="headers"
                 :items="contacts"
                 must-sort
-                :items-per-page="5"
+                :items-per-page="10"
                 class="elevation-1"
                 :options.sync="options"
                 :server-items-length="rowsNumber"
