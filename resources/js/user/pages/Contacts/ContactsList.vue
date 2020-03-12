@@ -47,7 +47,7 @@
                 options: {},
                 form: {},
                 sortBy: ['first_name'],
-                sortDesc: true,
+                sortDesc: false,
                 searchText: '',
                 selected: [],
                 headers: [
