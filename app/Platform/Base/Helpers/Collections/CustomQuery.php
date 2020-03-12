@@ -30,9 +30,10 @@
 
         public function scopeOrderQuery($query) {
             $request = request('queryPagination');
+            $sortDesc = $request['sortDesc'] ?? true;
             //$this->limit_to_active_users($query);
-            return $query->orderBy($request['sortBy'] ?? 'created_at', $request['sortDirection']
-                ?? 'desc')->paginate($request['rowsPerPage'] ?? 10);
+            return $query->orderBy($request['sortBy'] ?? 'created_at', $sortDesc
+                ? 'desc': 'asc')->paginate($request['itemsPerPage'] ?? 10);
         }
 
         public function searchMultipleColumns($searchArray) {

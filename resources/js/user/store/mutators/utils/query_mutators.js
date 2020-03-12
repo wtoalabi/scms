@@ -1,4 +1,13 @@
 export default {
+    setQueryOptions(state,options){
+        console.log(options)
+        let existing = state.queries.pagination.queryPagination;
+        existing.sortDesc = options['sortDesc'][0];
+        existing.sortBy = options['sortBy'][0];
+        existing.itemsPerPage = options['itemsPerPage'];
+        existing.page = options['page'];
+        state.queries.pagination.queryPagination = existing;
+    },
     setQueryPagination(state, payload){
         //let existing = state.queries.pagination.queryPagination;
         //state.queries.pagination.queryPagination = Object.assign(existing, payload)
@@ -24,7 +33,6 @@ export default {
         state.queries.pagination.queryPagination = {
             'sortBy': null,
             'page': 1,
-            'rowsPerPage': 12,
         };
         state.queries.dateFilters.filterByDate = {};
         state.queries.querySearch = {};
