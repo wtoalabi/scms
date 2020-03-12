@@ -31,9 +31,13 @@
         public function scopeOrderQuery($query) {
             $request = request('queryPagination');
             $sortDesc = $request['sortDesc'] ?? true;
+            $sortBy = $request['sortBy'] ?? 'first_name';
             //$this->limit_to_active_users($query);
-            return $query->orderBy($request['sortBy'] ?? 'created_at', $sortDesc
-                ? 'desc': 'asc')->paginate($request['itemsPerPage'] ?? 10);
+            if($sortBy === 'birthday'){
+                $sortBy = 'birthday_weight';
+            }
+            return $query->orderBy($sortBy ?? 'created_at', $sortDesc
+                ? 'desc' : 'asc')->paginate($request['itemsPerPage'] ?? 10);
         }
 
         public function searchMultipleColumns($searchArray) {
@@ -106,9 +110,15 @@
 
         public function limit_to_active_users($query) {
             $user = auth('user')->user();
-            if($user){
-                $query->where('merchant_id',$user->id);
+            if ($user) {
+                $query->where('merchant_id', $user->id);
             }
             return $query;
+        }
+
+        public function sortByBirthday($query) {
+            return $this->queryBuilder->get()->sortBy(function($q){
+                return $q->birthday['weight'];
+            });
         }
     }

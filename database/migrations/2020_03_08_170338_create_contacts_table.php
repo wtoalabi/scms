@@ -21,6 +21,7 @@ class CreateContactsTable extends Migration
             $table->string('address');
             $table->integer('dateAdded')->nullable();
             $table->json('birthday')->nullable();
+            $table->integer('birthday_weight')->nullable();
             $table->timestamps();
         });
     }
