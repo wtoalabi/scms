@@ -16,5 +16,6 @@
     });
 
     Route::domain('{route}.scms.loc')->middleware('admin_user')->group(function () {
+        Route::get('loadMetaData','Generic\MetaDataController@index');
         Route::post('contacts','Contacts\ContactsController@index');
     });
