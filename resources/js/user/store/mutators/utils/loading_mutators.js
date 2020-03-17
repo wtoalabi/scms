@@ -12,4 +12,7 @@ export default {
     stopLoading(state,_){
         state.loading = false;
     },
+    commitMetaData(state,payload){
+        state.groups.data = payload.groups
+    }
 }

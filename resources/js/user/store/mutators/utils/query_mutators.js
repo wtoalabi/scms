@@ -24,7 +24,7 @@ export default {
         //return state.queries.queryFilterByColumn.filterByColumn = payload
     },
     setQueryFilterByRelationship(state,payload){
-        //return state.queries.queryFilterByRelationship.filterByRelationship = payload
+        return state.queries.queryFilterByRelationship.filterByRelationship = payload
     },
     commitCustomFilter(state, payload){
         //return state.queries.customFilters = payload

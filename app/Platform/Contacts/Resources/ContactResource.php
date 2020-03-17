@@ -14,8 +14,14 @@
                 'last_name' => $this->last_name,
                 'email' => $this->email,
                 'address' => $this->address,
+                'groups' => $this->groups->map(function ($group) {
+                    return [
+                        'id' => $group->id,
+                        'name' => $group->name
+                    ];
+                }),
                 'dateAdded' => (new Carbon($this->dateAdded))->format("d-M-Y"),
-                'birthday' => ['day'=>$this->birthday['day'],'month' =>$this->birthday['month']],
+                'birthday' => ['day' => $this->birthday['day'], 'month' => $this->birthday['month']],
             ];
         }
     }

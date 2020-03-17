@@ -10,7 +10,6 @@
 
     use App\Platform\Base\Helpers\Authenticated;
     use App\Platform\Base\Helpers\Date\FormatTime;
-    use App\Platform\Store\Categories\Category;
     use Carbon\Carbon;
 
     trait CustomQuery
@@ -32,10 +31,8 @@
         public function scopeOrderQuery($query) {
             $request = request('queryPagination');
             $sortDesc = $request['sortDesc'] ?? true;
-            $sortBy = $request['sortBy'] ?? 'create_at';
-            if (request('user_id')) {
-                $this->limit_to_active_users($query);
-            }
+            $sortBy = $request['sortBy'] ?? 'created_at';
+            $this->limit_to_active_users($query);
             if ($sortBy === 'birthday') {
                 $sortBy = 'birthday_weight';
             }
@@ -70,8 +67,8 @@
                 $to = $dateArray['toDate'];
                 if ($from && $to) {
                     return $this->queryBuilder->whereBetween('created_at', [$from, $to]);
-                } else {
                     return $this->queryBuilder;
+                } else {
                 }
             }
             return $this->queryBuilder;
@@ -112,6 +109,6 @@
         }
 
         public function limit_to_active_users($query) {
-                return $query->where('user_id', request('user_id'));
+            return $query->where('user_id', Authenticated::LimitToID());
         }
     }

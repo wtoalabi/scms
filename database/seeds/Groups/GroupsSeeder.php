@@ -12,7 +12,7 @@
          * @return void
          */
         public function run() {
-            $groups = collect(['Ushering', 'Choir', 'Technical', 'Sanctuary']);
+            $groups = collect(['Ushering', 'Choir', 'Technical', 'Sanctuary','Evg & Followup']);
             $faker = Faker::create();
             $groups->each(function ($group) use ($faker) {
                 factory(Group::class)->create([

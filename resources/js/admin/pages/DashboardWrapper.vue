@@ -44,6 +44,9 @@
     import MenuList from "./Utils/Nav/MenuList";
 
     export default {
+        mounted() {
+            this.$store.dispatch("loadMetaData")
+        },
         components: {MenuList},
         props: {
             source: String,

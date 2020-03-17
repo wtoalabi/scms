@@ -16,13 +16,17 @@
          */
         public function run() {
             $count = 350;
+            $faker = Faker::create();
+            $groups = Group::all()->pluck('id')->toArray();
             while ($count > 0) {
                 [$birthday, $birthday_weight] = $this->getRandomBirthday();
-                factory(Contact::class)->create([
+                $contact = factory(Contact::class)->create([
                     'dateAdded' => FormatTime::GetRandomDateStamp(),
                     'birthday' => $birthday,
                     'birthday_weight' => $birthday_weight,
                 ]);
+                $groupsID = $faker->randomElements($groups,rand(1,3));
+                $contact->groups()->sync($groupsID);
                 $count--;
             }
         }
@@ -49,8 +53,7 @@
             $month = $faker->randomElement([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
             $weight = ($monthWeight[$month] * $month) + ($day);
             return [['day'=>$day,'month'=>$month], $weight];
-
-            /*Contact::all()->sortBy(function($a){return $a->birthday['weight'];})->pluck(['birthday'])*/
+            //Contact::all()->sortBy(function($a){return $a->birthday['weight'];})->pluck(['birthday'])*/
         }
 
     }

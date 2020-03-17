@@ -47,6 +47,9 @@
     import AccountSnapshot from "./Utils/AccountSnapshot";
 
     export default {
+        mounted() {
+            this.$store.dispatch("loadMetaData")
+        },
         mixins: [Requests],
         components: {MenuList, AccountSnapshot},
         props: {

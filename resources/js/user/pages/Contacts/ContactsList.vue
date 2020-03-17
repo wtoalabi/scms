@@ -15,6 +15,16 @@
                         hide-details
                     ></v-text-field>
                 </v-card-title>
+                <div class="mb-3 mt-3">
+                    <v-expansion-panels accordion>
+                        <v-expansion-panel>
+                            <v-expansion-panel-header>Advanced Filters</v-expansion-panel-header>
+                            <v-expansion-panel-content>
+                                <group-selector :incomingGroup="0" action="loadContacts"/>
+                            </v-expansion-panel-content>
+                        </v-expansion-panel>
+                    </v-expansion-panels>
+                </div>
             </v-card>
             <v-data-table
                 :sort-by.sync="sortBy"
@@ -34,6 +44,9 @@
                 <template v-slot:item.birthday="{ item }">
                     <p>{{item.birthday | birthdayString}}</p>
                 </template>
+                <template v-slot:item.groups="{ item }">
+                    <groups-chip :max="2"  :prop-groups="item.groups"/>
+                </template>
             </v-data-table>
 
         </template>
@@ -41,7 +54,11 @@
 </template>
 
 <script>
+    import GroupsChip from "../../../utils/SharedComponents/Groups/GroupsChip";
+    import GroupSelector from "../../../utils/SharedComponents/Contacts/GroupSelector";
+
     export default {
+        components: {GroupsChip, GroupSelector},
         data() {
             return {
                 options: {},
@@ -72,6 +89,11 @@
                         sortable: true,
                         value: 'birthday',
                     }, {
+                        text: 'Groups',
+                        align: 'start',
+                        sortable: false,
+                        value: 'groups',
+                    }, {
                         text: 'Date Added',
                         align: 'start',
                         sortable: true,
@@ -82,7 +104,7 @@
         },
         watch: {
             options: {
-                handler(){
+                handler() {
                     this.$store.commit("setQueryOptions", this.options);
                     this.loadContacts()
                 }
