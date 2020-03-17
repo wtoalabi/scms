@@ -11,11 +11,11 @@
          */
         public function run() {
             // $this->call(UsersTableSeeder::class);
+            $this->call(InitialSetUp::class);
             $this->call(UsersSeeder::class);
-            $this->call(ContactsSeeder::class);
             $this->call(GroupsSeeder::class);
+            $this->call(ContactsSeeder::class);
             //$this->call(SettingsSeeder::class);
             // $this->call(AdminsSeeder::class);
-            $this->call(InitialSetUp::class);
         }
     }
