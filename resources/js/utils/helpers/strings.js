@@ -13,7 +13,14 @@ export function separateKebab(string){
         return string;
     }
 }
-
+export function flattenedSentenceFromArray(arrayOfObject, keyName) {
+    let string = "";
+    if (_.isNotEmpty(arrayOfObject)) {
+        arrayOfObject.filter(e => e)
+            .forEach(object => string += `${object[keyName]}, `);
+        return string.trim().substr(0, string.length - 2);
+    }
+}
 export function slugify(string) {
     const a = 'Ã Ã¡Ã¤Ã¢Ã£Ã¥ÄƒÃ¦Ã§Ã¨Ã©Ã«ÃªÇµá¸§Ã¬Ã­Ã¯Ã®á¸¿Å„Ç¹Ã±Ã²Ã³Ã¶Ã´Å“Ã¸á¹•Å•ÃŸÅ›È™È›Ã¹ÃºÃ¼Ã»Ç˜áºƒáºÃ¿ÅºÂ·/_,:;'
     const b = 'aaaaaaaaceeeeghiiiimnnnooooooprssstuuuuuwxyz------'
