@@ -20,8 +20,10 @@ export default async function Request(url, {
         let extraData = store.state.mergeAllQueries();
         data = {...extraData, ...data}
     }
-    let page = store.state.queries.pagination.queryPagination.page ?? 1;
-    await axios[action](`${url}?page=${page}`, data).then(response => {
+    let page = store.state.queries.pagination.queryPagination.page;
+    let urlSuffix = page > 1 ? `?page=${page}` : ''
+
+    await axios[action](`${url}${urlSuffix}`, data).then(response => {
         if (mutator) {
             store.commit(mutator, response.data.response);
         }
