@@ -91,12 +91,27 @@
         public function filterByRelationship($relationshipArray) {
             collect($relationshipArray)->values()->each(function ($relationship) {
                 list($table, $column, $value) = $relationship;
-                return $this->queryBuilder->whereHas($table, function ($query) use ($value, $column) {
-                    if ($value !== "None") {
-                        return $query->where($column, 'like', "%$value%");
+                if ($value !== "None") {
+                    if (is_array($value)) {
+                        collect($value)->each(function ($eachValue) use ($table, $column) {
+                            return $this->queryBuilder->whereHas($table, function ($query) use (
+                                $eachValue,
+                                $column
+                            ) {
+                                return $query->where($column, 'like', "%$eachValue%");
+                            });
+                        });
+                    } else {
+                        return $this->queryBuilder->whereHas($table, function ($query) use (
+                            $value,
+                            $column
+                        ) {
+                            return $query->where($column, 'like', "%$value%");
+                        });
                     }
                     return $this->queryBuilder;
-                });
+                }
+                return $this->queryBuilder;
             });
             return $this->queryBuilder;
         }

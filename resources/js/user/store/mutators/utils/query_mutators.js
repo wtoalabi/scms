@@ -37,5 +37,9 @@ export default {
         state.queries.dateFilters.filterByDate = {};
         state.queries.querySearch = {};
         state.queries.queryFilterByColumn.filterByColumn = {};
+        state.queries.queryFilterByRelationship.filterByRelationship = {};
+        /*:{
+            filterByRelationship:{}
+        },*/
     },
 }

@@ -17,6 +17,7 @@ const router = new VueRouter({
             name: 'Overview',
             beforeEnter(to, from, next) {
                 //Store.dispatch('getContent');
+                //Store.dispatch('getContent');
                 next()
             }
         },
