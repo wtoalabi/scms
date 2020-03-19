@@ -10,7 +10,7 @@
         label="Pick A Group"
     />-->
     <v-autocomplete
-        v-model="selectedGroup"
+        v-model="selectedGroups"
         @input="searchGroup"
         chips
         multiple
@@ -19,7 +19,7 @@
         :items="groups"
         item-text="name"
         item-value="name"
-        label="Pick A Group"
+        label="Filter By Group(s)"
     />
   </div>
 </template>
@@ -38,8 +38,8 @@
   export default {
     mounted() {
       if(this.incomingGroup){
-        this.selectedGroup = this.incomingGroup;
-        this.searchGroup(this.selectedGroup);
+        this.selectedGroups.push(this.incomingGroup);
+        this.searchGroup(this.selectedGroups);
       }
 
     },
@@ -55,13 +55,14 @@
     },
     data() {
       return {
-        selectedGroup: null,
+        selectedGroups: [],
       }
     },
     methods: {
       async searchGroup(groupName) {
-        if (groupName === 0) {
+        if (groupName.includes("None")) {
           await this.$store.commit("resetQueryState", groupName);
+          this.selectedGroups = []
         } else {
          /// await this.$store.commit("setContactGroupSearch", groupID);
             let existingColumnFilters = this.$store.state.queries.queryFilterByRelationship
@@ -85,6 +86,7 @@
 </script>
 <style scoped>
   .selector {
-    width: 100%;
+      margin: 1rem;
+      max-width: 25%;
   }
 </style>

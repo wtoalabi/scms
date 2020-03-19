@@ -20,7 +20,10 @@
                         <v-expansion-panel>
                             <v-expansion-panel-header>Advanced Filters</v-expansion-panel-header>
                             <v-expansion-panel-content>
+                                <v-row>
                                 <group-selector :incomingGroup="0" action="loadContacts"/>
+                                <group-selector :incomingGroup="0" action="loadContacts"/>
+                                </v-row>
                             </v-expansion-panel-content>
                         </v-expansion-panel>
                     </v-expansion-panels>
