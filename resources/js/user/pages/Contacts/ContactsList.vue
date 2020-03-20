@@ -22,7 +22,8 @@
                             <v-expansion-panel-content>
                                 <v-row>
                                 <group-selector :incomingGroup="0" action="loadContacts"/>
-                                <group-selector :incomingGroup="0" action="loadContacts"/>
+                                    <birth-day-selector
+                                        @filterByDateOfBirth="filterByDateOfBirth"/>
                                 </v-row>
                             </v-expansion-panel-content>
                         </v-expansion-panel>
@@ -59,9 +60,10 @@
 <script>
     import GroupsChip from "../../../utils/SharedComponents/Groups/GroupsChip";
     import GroupSelector from "../../../utils/SharedComponents/Contacts/GroupSelector";
+    import BirthDaySelector from "../../../utils/SharedComponents/Contacts/BirthDaySelector";
 
     export default {
-        components: {GroupsChip, GroupSelector},
+        components: {GroupsChip, GroupSelector,BirthDaySelector},
         data() {
             return {
                 options: {},
@@ -119,6 +121,12 @@
                     this.$store.commit("setQuerySearchArray", {'searchMultipleColumns': [['first_name', 'last_name', 'email'], searchText]});
                     this.loadContacts();
                 })
+            },
+            filterByDateOfBirth(selectedDateOfBirth){
+                this.$store.commit("setQueryFilterByBirthday",
+                    ['birthday',selectedDateOfBirth]);
+                this.loadContacts()
+                console.log(selectedDateOfBirth)
             },
             loadContacts() {
                 this.$store.dispatch("loadContacts");

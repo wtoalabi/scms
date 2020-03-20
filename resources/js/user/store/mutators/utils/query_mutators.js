@@ -21,7 +21,10 @@ export default {
         return state.queries.querySearch = payload
     },
     setQueryFilterByColumn(state,payload){
-        //return state.queries.queryFilterByColumn.filterByColumn = payload
+        return state.queries.queryFilterByColumn.filterByColumn = payload
+    },
+    setQueryFilterByBirthday(state,payload){
+        return state.queries.queryFilterByColumn.filterByBirthday = payload
     },
     setQueryFilterByRelationship(state,payload){
         return state.queries.queryFilterByRelationship.filterByRelationship = payload

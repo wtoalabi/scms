@@ -76,6 +76,7 @@
 
         public function filterByColumn($queryArray) {
             if ($queryArray) {
+                dd($queryArray);
                 collect($queryArray)->each(function ($each) {
                     $column = $each[0];
                     $value = $each[1];
@@ -88,6 +89,17 @@
             return $this->queryBuilder;
         }
 
+        public function filterByBirthday($queryArray) {
+            if ($queryArray) {
+                $column = $queryArray[0];
+                $birthdayValues = $queryArray[1];
+                foreach ($birthdayValues as $value=>$id){
+                        $this->queryBuilder->whereJsonContains("$column->$value", $id);
+                }
+                return $this->queryBuilder;
+            }
+            return $this->queryBuilder;
+        }
         public function filterByRelationship($relationshipArray) {
             collect($relationshipArray)->values()->each(function ($relationship) {
                 list($table, $column, $value) = $relationship;

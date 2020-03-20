@@ -1,18 +1,10 @@
 <template>
   <div class="selector">
-      <!--<v-select
-        v-model="selectedGroup"
-        @input="searchGroup"
-        append-icon="mdi-account-group-outline"
-        :items="groups"
-        item-text="name"
-        item-value="name"
-        label="Pick A Group"
-    />-->
     <v-autocomplete
         v-model="selectedGroups"
         @input="searchGroup"
         chips
+        clearable
         multiple
         solo
         append-icon="mdi-account-group-outline"
@@ -23,16 +15,6 @@
     />
   </div>
 </template>
-<!--<v-autocomplete
-            v-model="values"
-            :items="items"
-            dense
-            chips
-            small-chips
-            label="Solo"
-            multiple
-            solo
-          ></v-autocomplete>-->
 <script>
 
   export default {
