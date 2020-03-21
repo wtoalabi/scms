@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use App\Platform\Phones\Policies\PhonePolicy;
+use App\Platform\Phones\Phone;
 use App\Platform\Groups\Policies\GroupPolicy;
 use App\Platform\Groups\Group;
 use App\Platform\Contacts\Policies\ContactPolicy;
@@ -17,6 +19,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
+        Phone::class => PhonePolicy::class,
         Group::class => GroupPolicy::class,
         Contact::class => ContactPolicy::class,
         // 'App\Model' => 'App\Policies\ModelPolicy',

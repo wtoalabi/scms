@@ -2,6 +2,7 @@
 use Illuminate\Database\Seeder;
 use App\Platform\Base\Authorization\Permission;
 
+
 class RolePermissionSeeder extends Seeder
 {
     /**

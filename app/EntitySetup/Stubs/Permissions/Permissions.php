@@ -45,7 +45,7 @@
         private static function CreatePermissionSeedForEntity() {
             $data = session('data');
             $dummyContent = $data['file']->get('App/EntitySetUp/Stubs/Permissions/EntityPermission.stub');
-            $namespace = "{$data['base']}\Base\Authorization\Permission";
+            $namespace = "{$data['namespace']}\Base\Authorization\Permission";
             $destinationPath = database_path("seeds/Authorization/Permissions//{$data['name']}PermissionsSeeder.php");
             $repositoryContent = str_replace(
                 ['Dummy', 'Dummies', 'DUMMY', 'PermissionModel',],

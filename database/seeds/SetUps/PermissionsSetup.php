@@ -13,6 +13,7 @@ class PermissionsSetup extends Seeder
     public function run()
     {
         //
+      $this->call(PhonePermissionSeeder::class);
       $this->call(GroupPermissionSeeder::class);
       $this->call(ContactPermissionSeeder::class);
       $this->call(PermissionsPermissionSeeder::class);

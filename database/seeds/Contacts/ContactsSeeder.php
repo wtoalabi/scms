@@ -4,6 +4,7 @@
     use App\Platform\Contacts\Contact;
 
     use App\Platform\Groups\Group;
+    use App\Platform\Phones\Phone;
     use Faker\Factory as Faker;
     use Illuminate\Database\Seeder;
 
@@ -27,8 +28,19 @@
                 ]);
                 $groupsID = $faker->randomElements($groups,rand(1,3));
                 $contact->groups()->sync($groupsID);
+                $randPhoneCount = rand(1,4);
+                $default = true;
+                while($randPhoneCount>0){
+                    factory(Phone::class)->create([
+                        'contact_id' => $contact->id,
+                        'default' => $default
+                    ]);
+                    $default = false;
+                    $randPhoneCount--;
+                }
                 $count--;
             }
+
         }
 
         private function getRandomBirthday() {
