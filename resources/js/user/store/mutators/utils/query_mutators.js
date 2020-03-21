@@ -1,39 +1,50 @@
 export default {
-    setQueryOptions(state,options){
+    setQueryOptions(state, options) {
+        let itemsPerPage = options['itemsPerPage'];
+        let response = false;
         let existing = state.queries.pagination.queryPagination;
         existing.sortDesc = options['sortDesc'][0];
         existing.sortBy = options['sortBy'][0];
-        existing.itemsPerPage = options['itemsPerPage'];
+        if (itemsPerPage === -1) {
+            if (existing.rowsNumber > 100) {
+                response = confirm(`Are you sure? Showing ${existing.rowsNumber} items might cause some performance drag. Still want to continue`)
+                response ? existing.itemsPerPage = existing.rowsNumber : null;
+            }else {
+                existing.itemsPerPage = existing.rowsNumber ;
+            }
+        } else {
+            existing.itemsPerPage = itemsPerPage;
+        }
         existing.page = options['page'];
         state.queries.pagination.queryPagination = existing;
     },
-    setQueryPagination(state, payload){
+    setQueryPagination(state, payload) {
         //let existing = state.queries.pagination.queryPagination;
         //state.queries.pagination.queryPagination = Object.assign(existing, payload)
     },
-    setFilterByDate(state, payload){
+    setFilterByDate(state, payload) {
         state.queries.pagination.queryPagination.sortBy = 'dateAdded';
         state.queries.pagination.queryPagination.sortDesc = false;
         let existing = state.queries.dateFilters['filterByDate'];
         return state.queries.dateFilters['filterByDate'] = Object.assign(existing, payload);
 
     },
-    setQuerySearchArray(state,payload){
+    setQuerySearchArray(state, payload) {
         return state.queries.querySearch = payload
     },
-    setQueryFilterByColumn(state,payload){
+    setQueryFilterByColumn(state, payload) {
         return state.queries.queryFilterByColumn.filterByColumn = payload
     },
-    setQueryFilterByBirthday(state,payload){
+    setQueryFilterByBirthday(state, payload) {
         return state.queries.queryFilterByColumn.filterByBirthday = payload
     },
-    setQueryFilterByRelationship(state,payload){
+    setQueryFilterByRelationship(state, payload) {
         return state.queries.queryFilterByRelationship.filterByRelationship = payload
     },
-    commitCustomFilter(state, payload){
+    commitCustomFilter(state, payload) {
         //return state.queries.customFilters = payload
     },
-    resetQueryState(state){
+    resetQueryState(state) {
         state.queries.pagination.queryPagination = {
             'sortBy': null,
             'page': 1,
