@@ -42,6 +42,7 @@
                 </div>
             </v-card>
             <v-data-table
+                @toggle-select-all="displayTop = !displayTop"
                 :sort-by.sync="sortBy"
                 :sort-desc.sync="sortDesc" :search="searchText"
                 v-model="selected"
@@ -56,6 +57,12 @@
                 :options.sync="options"
                 :server-items-length="rowsNumber"
             >
+                <template v-slot:top>
+                    <div v-if="displayTop">
+                    <button>Send Mail</button>
+                    <button>Send SMS</button> to all at once?
+                    </div>
+                </template>
                 <template v-slot:item.birthday="{ item }">
                     <p>{{item.birthday | birthdayString}}</p>
                 </template>
@@ -63,7 +70,6 @@
                     <groups-chip :max="2" :prop-groups="item.groups"/>
                 </template>
             </v-data-table>
-
         </template>
     </div>
 </template>
@@ -74,11 +80,11 @@
     import BirthDaySelector from "../../../utils/SharedComponents/Contacts/BirthDaySelector";
     import DateSelector from "../../../utils/SharedComponents/Contacts/DateSelector";
     import {turnDateToTimestamp} from "../../../utils/helpers/dates_time";
-
     export default {
         components: {GroupsChip, GroupSelector, BirthDaySelector, DateSelector},
         data() {
             return {
+                displayTop: false,
                 options: {},
                 form: {},
                 sortBy: ['first_name'],
@@ -87,15 +93,10 @@
                 selected: [],
                 headers: [
                     {
-                        text: 'First Name',
+                        text: 'Name',
                         align: 'start',
                         sortable: true,
-                        value: 'first_name',
-                    }, {
-                        text: 'Last Name',
-                        align: 'start',
-                        sortable: true,
-                        value: 'last_name',
+                        value: 'name',
                     }, {
                         text: 'Email',
                         align: 'start',
