@@ -1,25 +1,25 @@
 <template>
-  <div class="ma-3 ml-5">
-    <v-row>
+  <div>
+    <v-row style="justify-content: space-evenly">
         <v-select
+            filled
+            class="ml-2"
             @input="filterDayOfBirth"
             clearable
-            style="max-width: 30%"
-            class="ma-2"
+            style="max-width: 50%"
             :items="days"
             label="Filter by Day of Birth"
-            placeholder="Select Days"
         ></v-select>
         <v-select
+            filled
             clearable
+            class="ml-2"
             @input="filterMonthOfBirth"
-            style="max-width: 30%"
-            class="ma-2"
+            style="max-width: 50%"
             :items="months"
             item-text="name"
             item-value="id"
             label="Filter by Month of Birth"
-            placeholder="Select Months"
         ></v-select>
     </v-row>
   </div>
@@ -32,7 +32,7 @@
       return {
           days:days,
           months: months,
-          selectedMonth: null,
+          selectedMonth:null,
           selectedDay:null
       }
     },

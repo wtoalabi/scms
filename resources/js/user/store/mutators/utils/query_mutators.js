@@ -1,6 +1,5 @@
 export default {
     setQueryOptions(state,options){
-        console.log(options)
         let existing = state.queries.pagination.queryPagination;
         existing.sortDesc = options['sortDesc'][0];
         existing.sortBy = options['sortBy'][0];
@@ -13,8 +12,10 @@ export default {
         //state.queries.pagination.queryPagination = Object.assign(existing, payload)
     },
     setFilterByDate(state, payload){
-        //let existing = state.queries.dateFilters['filterByDate'];
-        //return state.queries.dateFilters['filterByDate'] = Object.assign(existing, payload);
+        state.queries.pagination.queryPagination.sortBy = 'dateAdded';
+        state.queries.pagination.queryPagination.sortDesc = false;
+        let existing = state.queries.dateFilters['filterByDate'];
+        return state.queries.dateFilters['filterByDate'] = Object.assign(existing, payload);
 
     },
     setQuerySearchArray(state,payload){

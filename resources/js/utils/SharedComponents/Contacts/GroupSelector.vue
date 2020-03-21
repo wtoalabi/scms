@@ -6,7 +6,6 @@
         chips
         clearable
         multiple
-        solo
         append-icon="mdi-account-group-outline"
         :items="groups"
         item-text="name"
@@ -68,7 +67,6 @@
 </script>
 <style scoped>
   .selector {
-      margin: 1rem;
-      max-width: 25%;
+      max-width: 100%;
   }
 </style>

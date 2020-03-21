@@ -14,7 +14,7 @@ class ContactsController extends Controller
     public function index(){
         $model = Contact::class;
          $result = $this->list($model);
-        return $this->response($model, ContactCollection::class, $result);
+         return $this->response($model, ContactCollection::class, $result);
     }
 
     public function create(){

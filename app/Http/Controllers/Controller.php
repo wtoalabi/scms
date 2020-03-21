@@ -53,7 +53,7 @@ class Controller extends BaseController
         return true;
     }
     protected function generatePasswordResetActivity(Request $request, string $authModel) {
-        $user = $thßis->getUserByEmail($request, $authModel);
+        $user = $this->getUserByEmail($request, $authModel);
         if($user){
             $user->generatePasswordRequestActivity($user);
         }

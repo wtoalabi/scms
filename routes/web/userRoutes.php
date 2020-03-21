@@ -13,6 +13,9 @@
         Route::get('/', function () {
             return view('user.dashboard.index');
         })->name('user_dashboard');
+        Route::get('login', function(){
+            return response()->redirectToRoute('user_login');
+        });
     });
 
 

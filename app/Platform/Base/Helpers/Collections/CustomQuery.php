@@ -63,12 +63,13 @@
 
         public function filterByDate($dateArray) {
             if ($dateArray) {
+                $column = $dateArray['column'];
                 $from = $dateArray['fromDate'];
                 $to = $dateArray['toDate'];
                 if ($from && $to) {
-                    return $this->queryBuilder->whereBetween('created_at', [$from, $to]);
-                    return $this->queryBuilder;
+                    return $this->queryBuilder->whereBetween($column, [$from, $to]);
                 } else {
+                    return $this->queryBuilder;
                 }
             }
             return $this->queryBuilder;
@@ -94,7 +95,9 @@
                 $column = $queryArray[0];
                 $birthdayValues = $queryArray[1];
                 foreach ($birthdayValues as $value=>$id){
-                        $this->queryBuilder->whereJsonContains("$column->$value", $id);
+                        if($id){
+                            $this->queryBuilder->whereJsonContains("$column->$value", $id);
+                        }
                 }
                 return $this->queryBuilder;
             }

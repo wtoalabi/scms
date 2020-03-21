@@ -21,9 +21,20 @@
                             <v-expansion-panel-header>Advanced Filters</v-expansion-panel-header>
                             <v-expansion-panel-content>
                                 <v-row>
-                                <group-selector :incomingGroup="0" action="loadContacts"/>
-                                    <birth-day-selector
-                                        @filterByDateOfBirth="filterByDateOfBirth"/>
+                                    <div class="col-5">
+                                        <group-selector :incomingGroup="0" action="loadContacts"/>
+                                    </div>
+                                    <div class="col-7">
+                                        <birth-day-selector
+                                            @filterByDateOfBirth="filterByDateOfBirth"/>
+                                    </div>
+                                </v-row>
+                                <v-row>
+                                    <date-selector
+                                        @filter="searchByDateJoined"
+                                        from-label="Filter Date Joined From:"
+                                        to-label="To"
+                                    />
                                 </v-row>
                             </v-expansion-panel-content>
                         </v-expansion-panel>
@@ -49,7 +60,7 @@
                     <p>{{item.birthday | birthdayString}}</p>
                 </template>
                 <template v-slot:item.groups="{ item }">
-                    <groups-chip :max="2"  :prop-groups="item.groups"/>
+                    <groups-chip :max="2" :prop-groups="item.groups"/>
                 </template>
             </v-data-table>
 
@@ -61,9 +72,11 @@
     import GroupsChip from "../../../utils/SharedComponents/Groups/GroupsChip";
     import GroupSelector from "../../../utils/SharedComponents/Contacts/GroupSelector";
     import BirthDaySelector from "../../../utils/SharedComponents/Contacts/BirthDaySelector";
+    import DateSelector from "../../../utils/SharedComponents/Contacts/DateSelector";
+    import {turnDateToTimestamp} from "../../../utils/helpers/dates_time";
 
     export default {
-        components: {GroupsChip, GroupSelector,BirthDaySelector},
+        components: {GroupsChip, GroupSelector, BirthDaySelector, DateSelector},
         data() {
             return {
                 options: {},
@@ -112,6 +125,7 @@
                 handler() {
                     this.$store.commit("setQueryOptions", this.options);
                     this.loadContacts()
+
                 }
             }
         },
@@ -122,17 +136,21 @@
                     this.loadContacts();
                 })
             },
-            filterByDateOfBirth(selectedDateOfBirth){
+            filterByDateOfBirth(selectedDateOfBirth) {
                 this.$store.commit("setQueryFilterByBirthday",
-                    ['birthday',selectedDateOfBirth]);
+                    ['birthday', selectedDateOfBirth]);
+
                 this.loadContacts()
-                console.log(selectedDateOfBirth)
             },
             loadContacts() {
                 this.$store.dispatch("loadContacts");
             },
-            sortingBy() {
-                console.log('sorting...')
+            searchByDateJoined(dates) {
+                dates.column = 'dateAdded';
+                dates.fromDate = turnDateToTimestamp(dates.fromDate);
+                dates.toDate = turnDateToTimestamp(dates.toDate);
+                this.$store.commit("setFilterByDate", dates);
+                this.loadContacts();
             }
         },
         computed: {

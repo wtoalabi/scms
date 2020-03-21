@@ -44996,6 +44996,8 @@ html.overflow-y-hidden {
   }
 }
 .selector[data-v-e6bf9e2c] {
-    margin: 1rem;
-    max-width: 25%;
+    max-width: 100%;
+}
+.row[data-v-85f4951e] {
+  justify-content: space-between;
 }

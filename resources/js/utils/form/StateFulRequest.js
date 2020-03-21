@@ -1,5 +1,4 @@
 import Errors from "./Errors";
-
 let errors = new Errors;
 export default async function Request(url, {
     data = {},
@@ -30,8 +29,11 @@ export default async function Request(url, {
         store.commit("stopLoading")
         onSuccessCallback();
     }).catch(errorData => {
+        if (errorData.response && errorData.response.status === 419) {
+            location.assign(`${location.origin}/login`);
+        }
         errors.record(errorData.response.data.errors);
-        onErrorCallback()
+        onErrorCallback();
         return store.commit("stopLoading", errors.errors)
     })
 }
