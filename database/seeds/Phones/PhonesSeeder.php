@@ -14,6 +14,6 @@ class PhonesSeeder extends Seeder
     public function run()
     {
       $faker = Faker::create();
-      //factory(Phone::class)->create();
+      factory(Phone::class)->create();
     }
 }
