@@ -2,20 +2,18 @@
   <div>
     <v-row style="justify-content: space-evenly">
         <v-select
-            filled
             class="ml-2"
             @input="filterDayOfBirth"
             clearable
-            style="max-width: 50%"
+            style="max-width: 50%; margin-top: 14px"
             :items="days"
             label="Filter by Day of Birth"
         ></v-select>
         <v-select
-            filled
             clearable
             class="ml-2"
             @input="filterMonthOfBirth"
-            style="max-width: 50%"
+            style="max-width: 50%; margin-top: 14px"
             :items="months"
             item-text="name"
             item-value="id"
