@@ -5,6 +5,9 @@ export default {
         let existing = state.queries.pagination.queryPagination;
         existing.sortDesc = options['sortDesc'][0];
         existing.sortBy = options['sortBy'][0];
+        if(existing.sortBy === 'name'){
+            existing.sortBy = 'last_name'
+        }
         if (itemsPerPage === -1) {
             if (existing.rowsNumber > 100) {
                 response = confirm(`Are you sure? Showing ${existing.rowsNumber} items might cause some performance drag. Still want to continue`)
