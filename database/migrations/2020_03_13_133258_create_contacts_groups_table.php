@@ -17,7 +17,7 @@ class CreateContactsGroupsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('contact_id');
             $table->unsignedBigInteger('group_id');
-
+            $table->boolean('default')->default(false);
             $table->foreign('contact_id')->references('id')->on('contacts')->onDelete('cascade');
             $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
             $table->timestamps();

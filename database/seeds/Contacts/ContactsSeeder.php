@@ -28,6 +28,8 @@
                 ]);
                 $groupsID = $faker->randomElements($groups,rand(1,3));
                 $contact->groups()->sync($groupsID);
+                $sampleGroup = $contact->groups->random();
+                $contact->groups()->updateExistingPivot($sampleGroup->id,['default'=>true]);
                 $randPhoneCount = rand(1,4);
                 $default = true;
                 while($randPhoneCount>0){
