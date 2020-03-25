@@ -1,5 +1,6 @@
 export default {
     groups: {
+        selectedGroup:{},
         data:[
             {id: 1,name:"Ushers"}
         ],

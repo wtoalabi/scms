@@ -66,8 +66,8 @@
                 <template v-slot:item.birthday="{ item }">
                     <p>{{item.birthday | birthdayString}}</p>
                 </template>
-                <template v-slot:item.groups="{ item }">
-                    <groups-chip :max="2" :prop-groups="item.groups"/>
+                <template v-slot:item.defaultGroup="{ item }">
+                    <groups-chip :prop-groups="item.groups" :prop-group="item.defaultGroup"/>
                 </template>
             </v-data-table>
         </template>
@@ -108,10 +108,10 @@
                         sortable: true,
                         value: 'birthday',
                     }, {
-                        text: 'Groups',
+                        text: 'Group',
                         align: 'start',
                         sortable: false,
-                        value: 'groups',
+                        value: 'defaultGroup',
                     }, {
                         text: 'Date Added',
                         align: 'start',

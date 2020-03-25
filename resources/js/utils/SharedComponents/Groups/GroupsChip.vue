@@ -2,11 +2,10 @@
     <div>
         <v-tooltip bottom>
             <template v-slot:activator="{ on }">
-                <span v-for="group in groups" v-on="on">
-                <v-chip @click="goToGroup(group)" :color="getColorGroup(group)" small class="ma-2">
-                {{group.name}}
+                <v-chip v-on="on" @click="goToGroup(group)" :color="getColorGroup(group)" small
+                        class="ma-2">
+                    {{group.name}}
                 </v-chip>
-        </span>
             </template>
             <span>{{formattedGroupNames}}</span>
         </v-tooltip>
@@ -18,15 +17,15 @@
     import {flattenedSentenceFromArray} from "../../helpers/strings";
 
     export default {
-        props: ['propGroups', 'max'],
+        props: ['propGroup','propGroups'],
         mounted() {
-            this.allGroups = _.cloneDeep(this.propGroups);
-            this.groups = this.propGroups.splice(0, this.max)
+            this.group = _.isNotEmpty(this.searchedGroup) ? this.searchedGroup : this.propGroup;
+            this.groups = this.propGroups
         },
         data() {
             return {
-                groups: [],
-                allGroups: [],
+                group: {},
+                groups: []
             }
         },
         methods: {
@@ -37,7 +36,7 @@
                 }
                 return colorGroup ? colorGroup.color : 'grey'
             },
-            goToGroup(group){
+            goToGroup(group) {
                 console.log(group);
             }
 
@@ -47,7 +46,10 @@
                 return this.$store.state.groups.colors.colorGroups;
             },
             formattedGroupNames() {
-                return flattenedSentenceFromArray(this.allGroups, 'name');
+                return flattenedSentenceFromArray(this.groups, 'name');
+            },
+            searchedGroup(){
+                return this.$store.state.groups.selectedGroup
             }
         }
     }

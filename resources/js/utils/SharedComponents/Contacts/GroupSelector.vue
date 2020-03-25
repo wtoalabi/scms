@@ -45,11 +45,11 @@
           await this.$store.commit("resetQueryState", groupName);
           this.selectedGroups = []
         } else {
-         /// await this.$store.commit("setContactGroupSearch", groupID);
             let existingColumnFilters = this.$store.state.queries.queryFilterByRelationship
                 .filterByRelationship;
             existingColumnFilters['filterByGroups'] = ['groups', 'name', groupName];
           await this.$store.commit("setQueryFilterByRelationship", existingColumnFilters);
+          await this.$store.commit("saveASelectedGroup", this.groups.find(group=>group.name===(this.selectedGroups[this.selectedGroups.length-1])));
         }
         /*await this.$store.commit("resetPagination");*/
         await this.$store.dispatch(this.action)

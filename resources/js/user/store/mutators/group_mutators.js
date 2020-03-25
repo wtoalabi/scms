@@ -1,6 +1,9 @@
 import {getRandomInt} from "../../../utils/helpers/integers";
 
 export default {
+    saveASelectedGroup(state, payload){
+        state.groups.selectedGroup = payload
+    },
     colorGroups(state, group) {
         let colors = state.groups.colors.colors
         state.groups.colors.colorGroups.push({
