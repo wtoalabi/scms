@@ -6,6 +6,7 @@
                     Contacts List
                     <v-spacer></v-spacer>
                     <v-text-field
+                        @click:clear="clearQueries"
                         @input="search"
                         v-model="searchText"
                         :append-icon="searchText ? '': 'mdi-magnify'"
@@ -172,6 +173,9 @@
                 dates.toDate = turnDateToTimestamp(dates.toDate);
                 this.$store.commit("setFilterByDate", dates);
                 this.loadContacts();
+            },
+            clearQueries(){
+                this.$store.commit("resetSearchQueries");
             }
         },
         computed: {

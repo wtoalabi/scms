@@ -34,7 +34,7 @@ export default {
     },
     setQuerySearchArray(state, payload) {
         let searchValue = payload.searchMultipleColumns[1];
-        if (searchValue.length >= 2 && Number.parseInt(searchValue)) {
+        if (searchValue && searchValue.length >= 2 && Number.parseInt(searchValue)) {
             state.queries.queryFilterByRelationship.filterByRelationship = [['phones', 'number', searchValue]]
             state.queries.querySearch = {}
         } else {
@@ -66,4 +66,8 @@ export default {
             filterByRelationship:{}
         },*/
     },
+    resetSearchQueries(state){
+        state.queries.querySearch = {};
+        state.queries.queryFilterByRelationship.filterByRelationship = []
+    }
 }
