@@ -9,7 +9,7 @@
         public function toArray($request) {
             return [
                 'id' => $this->id,
-                'number' => $this->number,
+                'number' => "0$this->number",
                 'default' => $this->default
             ];
         }

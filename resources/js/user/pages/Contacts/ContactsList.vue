@@ -59,8 +59,9 @@
             >
                 <template v-slot:top>
                     <div v-if="displayTop">
-                    <button>Send Mail</button>
-                    <button>Send SMS</button> to all at once?
+                        <button>Send Mail</button>
+                        <button>Send SMS</button>
+                        to all at once?
                     </div>
                 </template>
                 <template v-slot:item.birthday="{ item }">
@@ -68,6 +69,11 @@
                 </template>
                 <template v-slot:item.defaultGroup="{ item }">
                     <groups-chip :prop-groups="item.groups" :prop-group="item.defaultGroup"/>
+                </template>
+                <template v-slot:item.defaultPhone="{ item }">
+                    <v-chip small class="ma-2">
+                        {{item.defaultPhone.number}}
+                    </v-chip>
                 </template>
             </v-data-table>
         </template>
@@ -80,6 +86,7 @@
     import BirthDaySelector from "../../../utils/SharedComponents/Contacts/BirthDaySelector";
     import DateSelector from "../../../utils/SharedComponents/Contacts/DateSelector";
     import {turnDateToTimestamp} from "../../../utils/helpers/dates_time";
+
     export default {
         components: {GroupsChip, GroupSelector, BirthDaySelector, DateSelector},
         data() {
@@ -104,14 +111,19 @@
                         value: 'email',
                     }, {
                         text: 'Birth Date',
-                        align: 'start',
+                        align: 'center',
                         sortable: true,
                         value: 'birthday',
                     }, {
                         text: 'Group',
-                        align: 'start',
+                        align: 'center',
                         sortable: false,
                         value: 'defaultGroup',
+                    }, {
+                        text: 'Phone Number',
+                        align: 'center',
+                        sortable: false,
+                        value: 'defaultPhone',
                     }, {
                         text: 'Date Added',
                         align: 'start',

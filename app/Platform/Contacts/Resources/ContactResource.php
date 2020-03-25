@@ -24,7 +24,7 @@
                 }),
                 'defaultPhone' => new PhoneResource($this->defaultPhone()),
                 'phones'=> new PhoneCollection($this->phones),
-                'dateAdded' => (new Carbon($this->dateAdded))->format("d-M-Y"),
+                'dateAdded' => (new Carbon($this->dateAdded))->format("d-m-Y"),
                 'birthday' => ['day' => $this->birthday['day'], 'month' => $this->birthday['month']],
             ];
         }
