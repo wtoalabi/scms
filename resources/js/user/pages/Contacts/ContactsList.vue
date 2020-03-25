@@ -9,7 +9,7 @@
                         @input="search"
                         v-model="searchText"
                         :append-icon="searchText ? '': 'mdi-magnify'"
-                        label="Search"
+                        label="Search for name, email or phone number"
                         single-line
                         clearable
                         hide-details
@@ -66,6 +66,14 @@
                 </template>
                 <template v-slot:item.birthday="{ item }">
                     <p>{{item.birthday | birthdayString}}</p>
+                </template>
+                <template v-slot:item.email="{ item }">
+                    <v-tooltip bottom>
+                        <template v-slot:activator="{ on }">
+                            <p v-on="on">{{item.email | shorten(30)}}</p>
+                        </template>
+                        <span>{{item.email}}</span>
+                    </v-tooltip>
                 </template>
                 <template v-slot:item.defaultGroup="{ item }">
                     <groups-chip :prop-groups="item.groups" :prop-group="item.defaultGroup"/>
