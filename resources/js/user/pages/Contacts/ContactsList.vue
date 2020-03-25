@@ -9,7 +9,7 @@
                         @input="search"
                         v-model="searchText"
                         :append-icon="searchText ? '': 'mdi-magnify'"
-                        label="Search for name, email or phone number"
+                        label="Search fullname, email or phone number"
                         single-line
                         clearable
                         hide-details

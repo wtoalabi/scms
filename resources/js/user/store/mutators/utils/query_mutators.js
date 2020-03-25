@@ -5,15 +5,15 @@ export default {
         let existing = state.queries.pagination.queryPagination;
         existing.sortDesc = options['sortDesc'][0];
         existing.sortBy = options['sortBy'][0];
-        if(existing.sortBy === 'name'){
+        if (existing.sortBy === 'name') {
             existing.sortBy = 'last_name'
         }
         if (itemsPerPage === -1) {
             if (existing.rowsNumber > 100) {
                 response = confirm(`Are you sure? Showing ${existing.rowsNumber} items might cause some performance drag. Still want to continue`)
                 response ? existing.itemsPerPage = existing.rowsNumber : null;
-            }else {
-                existing.itemsPerPage = existing.rowsNumber ;
+            } else {
+                existing.itemsPerPage = existing.rowsNumber;
             }
         } else {
             existing.itemsPerPage = itemsPerPage;
@@ -33,7 +33,13 @@ export default {
 
     },
     setQuerySearchArray(state, payload) {
-        return state.queries.querySearch = payload
+        let searchValue = payload.searchMultipleColumns[1];
+        if (searchValue.length >= 2 && Number.parseInt(searchValue)) {
+            state.queries.queryFilterByRelationship.filterByRelationship = [['phones', 'number', searchValue]]
+            state.queries.querySearch = {}
+        } else {
+            return state.queries.querySearch = payload
+        }
     },
     setQueryFilterByColumn(state, payload) {
         return state.queries.queryFilterByColumn.filterByColumn = payload

@@ -77,7 +77,6 @@
 
         public function filterByColumn($queryArray) {
             if ($queryArray) {
-                dd($queryArray);
                 collect($queryArray)->each(function ($each) {
                     $column = $each[0];
                     $value = $each[1];
