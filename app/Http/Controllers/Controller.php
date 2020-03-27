@@ -79,6 +79,10 @@ class Controller extends BaseController
 
     }
 
+    public function singleResponse($resource) {
+        return response(['response' => $resource], 200);
+    }
+
     protected function listResponse($model, $collection) {
         $result = $model::orderQuery();
         return $this->response($model, new $collection($result),
