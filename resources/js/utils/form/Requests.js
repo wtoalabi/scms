@@ -10,7 +10,6 @@ export default {
         return {
             mainData: [],
             newForm: {},
-            loading: false,
             form: {},
             errors: new Errors,
         }
@@ -57,10 +56,6 @@ export default {
                 scrollToTop();
                 this.showMessage({response: response})
             }
-            setTimeout(() => {
-                this.loading = false;
-
-            }, 500);
         },
 
         handleError(error, onErrorCallback, showResponseMessage) {
@@ -79,28 +74,18 @@ export default {
                     this.errors.record(error.response.data.errors)
                 }
             }
-            this.loading = false;
         },
 
         showMessage({response = "Success!", color = 'primary', icon = "thumb_up"} = {}) {
 
         },
         startLoading(stopLoadingBar = false, load) {
-            if (stopLoadingBar) {
-                this.removeLoadingBar()
-            }
-            this.loading = load;
+            if (stopLoadingBar) {}
         },
         append(form) {
             this.form = new FormData();
             for (let key in form) {
                 this.form.append(key, form[key])
-            }
-        },
-        removeLoadingBar() {
-            let loadingBar = document.querySelector(".q-loading-bar");
-            if (loadingBar) {
-                loadingBar.remove()
             }
         },
         clearForm() {
@@ -113,23 +98,13 @@ export default {
             console.dir(error)
             return error.response.status
         },
-        startInnerLoading() {
-            const spinner = Quasar.components.QSpinnerDots
-            this.$q.loading.show({
-                spinner,
-                spinnerColor: 'primary',
-                messageColor: 'black',
-                backgroundColor: 'secondary',
-                message: ''
-            })
-        },
-        stopInnerLoading() {
-            this.$q.loading.hide();
-        }
+        startInnerLoading() {},
+        stopInnerLoading() {}
 
     },
-    computed: {},
-    beforeDestroy() {
-        this.$q.loading.hide()
-    }
+    computed: {
+        loading(){
+            return this.$store.state.loading;
+        },
+    },
 }

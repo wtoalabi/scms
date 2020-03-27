@@ -35,7 +35,10 @@
         </v-app-bar>
         <v-content>
             <v-container fluid>
-                <v-breadcrumbs v-if="showBreadcrumbs" :items="breadcrumbsList" large></v-breadcrumbs>
+                <div v-if="!loading">
+                <v-breadcrumbs v-if="showBreadcrumbs" :items="breadcrumbsList"
+                               large></v-breadcrumbs>
+                </div>
                 <router-view class="fill-height"/>
             </v-container>
         </v-content>
@@ -51,7 +54,6 @@
         mounted() {
             this.$store.dispatch("loadMetaData")
         },
-        mixins: [Requests],
         components: {MenuList, AccountSnapshot},
         props: {
             source: String,
@@ -95,15 +97,18 @@
             }
         },
         computed: {
-            breadcrumbsList(){
+            loading() {
+                return this.$store.state.loading;
+            },
+            breadcrumbsList() {
                 return this.$store.state.breadcrumbs.list
             },
-            showBreadcrumbs(){
+            showBreadcrumbs() {
                 let route = this.$route;
-                if(route.name === "Overview"){
+                if (route.name === "Overview") {
                     return false;
-                }else{
-                return this.$store.state.breadcrumbs.show
+                } else {
+                    return this.$store.state.breadcrumbs.show
                 }
             }
         }

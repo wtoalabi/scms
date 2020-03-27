@@ -10,6 +10,7 @@ export default {
         state.loading = true;
     },
     stopLoading(state,_){
+        console.log("stop....")
         state.loading = false;
     },
     commitMetaData(state,payload){

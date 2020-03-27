@@ -14,7 +14,7 @@ export default async function Request(url, {
     store = null,
     load = true,
 } = {}) {
-    store.commit("startLoading");
+    //showInnerLoading ? store.commit("startLoading") : null;
     if (action !== 'get') {
         let extraData = store.state.mergeAllQueries();
         data = {...extraData, ...data}
@@ -27,7 +27,8 @@ export default async function Request(url, {
         if (mutator) {
             store.commit(mutator, data);
         }
-        store.commit("stopLoading")
+       //showInnerLoading ? store.commit("stopLoading") : null;
+        console.log(response)
         onSuccessCallback(data);
     }).catch(errorData => {
         if (errorData.response && errorData.response.status === 419) {

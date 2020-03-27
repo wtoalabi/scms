@@ -27,6 +27,7 @@ class ContactsController extends Controller
     }
 
     public function show ($route,Contact $contact){
+        sleep(5);
         return $this->singleResponse(new ContactResource($contact));
     }
 

@@ -1,25 +1,17 @@
 <template>
-    <div class="loading-backdrop">
-        <q-spinner-puff color="deep-orange-8" :size="maxSize"/>
-    </div>
+    <v-sheet
+        :color="`grey ${theme.isDark ? 'darken-2' : 'lighten-4'}`"
+        class="px-3 pt-3 pb-3"
+    >
+        <v-skeleton-loader
+            class="mx-auto"
+            max-width="100%"
+            type="image, list-item,card-heading,list-item,card-heading,list-item, card-heading,actions"
+        ></v-skeleton-loader>
+    </v-sheet>
 </template>
-<style lang="scss">
-    .loading-backdrop {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100vh;
-    }
-</style>
-
 <script>
-  export default {
-    props: ['size'],
-    computed:{
-      maxSize(){
-        return this.size ? this.size : '6rem';
-      }
+    export default {
+        inject: ['theme'],
     }
-  }
 </script>
