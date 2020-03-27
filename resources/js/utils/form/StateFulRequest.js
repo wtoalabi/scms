@@ -23,11 +23,12 @@ export default async function Request(url, {
     let urlSuffix = page > 1 ? `?page=${page}` : ''
 
     await axios[action](`${url}${urlSuffix}`, data).then(response => {
+        let data =  response.data.response
         if (mutator) {
-            store.commit(mutator, response.data.response);
+            store.commit(mutator, data);
         }
         store.commit("stopLoading")
-        onSuccessCallback();
+        onSuccessCallback(data);
     }).catch(errorData => {
         if (errorData.response && errorData.response.status === 419) {
             location.assign(`${location.origin}/login`);
