@@ -4,7 +4,7 @@
             v-if="userCan('VIEW_GROUPS')"
             key="groups"
             link
-            to="/groups"
+            to="/groups/list"
         >
             <v-list-item-action>
                 <v-icon>mdi-account-group</v-icon>

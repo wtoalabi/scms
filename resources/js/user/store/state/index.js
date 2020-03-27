@@ -3,9 +3,11 @@ import queries_state from "./utils/queries_state";
 import contacts_state from "./contacts_state";
 import groups_state from "./groups_state";
 import user_state from "./user_state";
+import utils_state from "./utils/utils_state";
 
 export default {
     ...default_state,
+    ...utils_state,
     ...queries_state,
     ...contacts_state,
     ...groups_state,

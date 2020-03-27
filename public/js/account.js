@@ -6762,7 +6762,8 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var vue_
 
 /***/ }),
 
-/***/ "./resources/js/account/router/settings.js":
+/***/
+    "./resources/js/account/router/settings.js":
 /*!*************************************************!*\
   !*** ./resources/js/account/router/settings.js ***!
   \*************************************************/
