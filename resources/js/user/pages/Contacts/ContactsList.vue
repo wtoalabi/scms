@@ -68,6 +68,12 @@
                 <template v-slot:item.birthday="{ item }">
                     <p>{{item.birthday | birthdayString}}</p>
                 </template>
+                <template v-slot:item.name="{ item }">
+                    <router-link class="link" style="text-decoration: none"
+                                 :to="`/contacts/${item.id}?tab=profile`" exact>
+                        {{item.name}}
+                    </router-link>
+                </template>
                 <template v-slot:item.email="{ item }">
                     <v-tooltip bottom>
                         <template v-slot:activator="{ on }">
@@ -97,6 +103,8 @@
     import {turnDateToTimestamp} from "../../../utils/helpers/dates_time";
 
     export default {
+        mounted() {
+        },
         components: {GroupsChip, GroupSelector, BirthDaySelector, DateSelector},
         data() {
             return {
@@ -174,13 +182,13 @@
                 this.$store.commit("setFilterByDate", dates);
                 this.loadContacts();
             },
-            clearQueries(){
+            clearQueries() {
                 this.$store.commit("resetSearchQueries");
             }
         },
         computed: {
             contacts() {
-                return this.$store.state.contacts.data
+                return this.$store.state.contacts.list
             },
             loading() {
                 return this.$store.state.loading;

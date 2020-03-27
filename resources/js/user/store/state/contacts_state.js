@@ -1,3 +1,7 @@
 export default {
-    contacts: [],
+    contacts: {
+        list: [],
+        current:{},
+        rowsNumber:0
+    },
 }
