@@ -10,6 +10,8 @@ import cloneDeep from 'lodash-es/cloneDeep'
 import uniq from 'lodash-es/uniq';
 import uniqBy from 'lodash-es/uniqBy';
 import isUndefined from 'lodash-es/isUndefined';
+import take from 'lodash-es/take';
+import last from 'lodash-es/last';
 
 
 let isNotEmpty = (value)=>{
@@ -30,4 +32,4 @@ let isEmail = (email) =>{
     let regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return regex.test(String(email).toLowerCase());
 }
-export default {has,isEmpty, debounce, isEmail, truncate, chunk, map, cloneDeep,uniq, minBy,maxBy,isNotEmpty, difference, uniqBy, isUndefined}
+export default {has,isEmpty, debounce, isEmail, truncate, chunk, map, cloneDeep,uniq, minBy,maxBy,isNotEmpty, take, last,difference, uniqBy, isUndefined}

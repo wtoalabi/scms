@@ -15,11 +15,14 @@ const router = new VueRouter({
             path: '/',
             component: Overview,
             name: 'Overview',
-            beforeEnter(to, from, next) {
-                //Store.dispatch('getContent');
+            /*beforeEnter(to, from, next) {
                 //Store.dispatch('getContent');
                 next()
-            }
+            }*/
+            meta: {
+                id: 'dashboard',
+                parents:[]
+            },
         },
         ...contacts,
         ...emails,
@@ -30,6 +33,7 @@ const router = new VueRouter({
 });
 router.beforeEach((to, from, next) => {
     Store.commit("resetQueryState");
+    Store.commit("commitBreadcrumbs", to.meta);
     Store.commit('setTitle', to.name);
     next()
 });

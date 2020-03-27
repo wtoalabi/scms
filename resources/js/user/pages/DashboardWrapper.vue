@@ -35,6 +35,7 @@
         </v-app-bar>
         <v-content>
             <v-container fluid>
+                <v-breadcrumbs v-if="showBreadcrumbs" :items="breadcrumbsList" large></v-breadcrumbs>
                 <router-view class="fill-height"/>
             </v-container>
         </v-content>
@@ -55,7 +56,25 @@
         props: {
             source: String,
         },
-        data: () => ({}),
+        data: () => ({
+            items: [
+                {
+                    text: 'Dashboard',
+                    disabled: false,
+                    href: 'breadcrumbs_dashboard',
+                },
+                {
+                    text: 'Link 1',
+                    disabled: false,
+                    href: 'breadcrumbs_link_1',
+                },
+                {
+                    text: 'Link 2',
+                    disabled: true,
+                    href: 'breadcrumbs_link_2',
+                },
+            ],
+        }),
         methods: {
             setDrawer() {
                 this.$store.commit("commitMiniDrawer", !this.$store.state.miniDrawer)
@@ -76,6 +95,17 @@
             }
         },
         computed: {
+            breadcrumbsList(){
+                return this.$store.state.breadcrumbs.list
+            },
+            showBreadcrumbs(){
+                let route = this.$route;
+                if(route.name === "Overview"){
+                    return false;
+                }else{
+                return this.$store.state.breadcrumbs.show
+                }
+            }
         }
     }
 </script>

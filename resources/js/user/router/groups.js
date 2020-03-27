@@ -1,3 +1,5 @@
+import Store from "../store";
+
 export default [
     {
         name: 'Groups',
@@ -8,9 +10,10 @@ export default [
                 name: "Groups List",
                 path: 'list',
                 component: () => import('@/user/pages/Groups/GroupsList'),
-                /*beforeEnter(to, from, next){
+                beforeEnter(to, from, next){
+                    Store.commit('commitBreadcrumbs',{text: "Groups List", disabled: true,level: 1,href:'/groups/list'});
                     next()
-                }*/
+                }
             },
             {
                 name: "Group",
