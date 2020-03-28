@@ -28,7 +28,6 @@ export default async function Request(url, {
             store.commit(mutator, data);
         }
        //showInnerLoading ? store.commit("stopLoading") : null;
-        console.log(response)
         onSuccessCallback(data);
     }).catch(errorData => {
         if (errorData.response && errorData.response.status === 419) {

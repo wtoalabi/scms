@@ -20,8 +20,6 @@ export default {
             }
             return c;
         });
-        console.log([state.breadcrumbs.list, payload])
-
     }
 }
 

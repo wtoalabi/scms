@@ -19,7 +19,8 @@
                 'groups' => $this->groups->map(function ($group) {
                     return [
                         'id' => $group->id,
-                        'name' => $group->name
+                        'name' => $group->name,
+                        'default' => $group->pivot->default,
                     ];
                 }),
                 'defaultPhone' => new PhoneResource($this->defaultPhone()),

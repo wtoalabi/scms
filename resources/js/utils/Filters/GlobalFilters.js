@@ -55,7 +55,9 @@ Vue.filter('numberInThousand', function(number){
 });
 
 Vue.filter('birthdayString', function(birthday){
-    return `${monthsMap[birthday['month']]} ${birthday['day']}`
+    if(birthday){
+        return `${monthsMap[birthday['month']]} ${birthday['day']}`
+    }
 });
 
 Vue.filter('textAvatar', function(text){
