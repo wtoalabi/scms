@@ -12,10 +12,11 @@
         public function toArray($request) {
             return [
                 'id' => $this->id,
+                'first_name' => $this->first_name,
+                'last_name' => $this->last_name,
                 'name' => "$this->first_name $this->last_name",
                 'email' => $this->email,
                 'address' => $this->address,
-                'defaultGroup' => $this->defaultGroup(),
                 'groups' => $this->groups->map(function ($group) {
                     return [
                         'id' => $group->id,

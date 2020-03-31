@@ -1,20 +1,27 @@
 <?php
 
-namespace App\Platform\Contacts\Requests;
-use App\Platform\Base\BaseFormRequest;
+    namespace App\Platform\Contacts\Requests;
 
-class UpdateContactFormRequest extends BaseFormRequest
-{
+    use App\Platform\Base\BaseFormRequest;
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
+    class UpdateContactFormRequest extends BaseFormRequest
     {
-        return [
-            //
-        ];
+
+        /**
+         * Get the validation rules that apply to the request.
+         *
+         * @return array
+         */
+        public function rules() {
+            return [
+                'first_name' => 'required|string',
+                'last_name' => 'required|string',
+                'email' => 'required|email',
+                'address' => 'required|string',
+                'selectedGroups' => 'nullable|array',
+                'phones' => 'nullable|array',
+                'dateAdded' => 'nullable',
+                'birthday' => 'nullable'
+            ];
+        }
     }
-}

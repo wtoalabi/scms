@@ -6,6 +6,7 @@ export default async function Request(url, {
     stopLoadingBar = false,
     showResponseMessage = true,
     showInnerLoading = false,
+    mergeQueries =  false,
     onSuccessCallback = () => {
     },
     onErrorCallback = () => {
@@ -15,7 +16,7 @@ export default async function Request(url, {
     load = true,
 } = {}) {
     //showInnerLoading ? store.commit("startLoading") : null;
-    if (action !== 'get') {
+    if (action !== 'get' && mergeQueries) {
         let extraData = store.state.mergeAllQueries();
         data = {...extraData, ...data}
     }

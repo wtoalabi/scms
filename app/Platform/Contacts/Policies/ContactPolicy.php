@@ -20,9 +20,9 @@ class ContactPolicy extends BasePolicy
     public function update (){
          $contact = Contact::find(request()->all()['id']);
          if ($this->hasPermissionTo('UPDATE_CONTACT')) {
-           /*if($this->isTheVerifiedOwnerWith($contact)){
+           if($this->isTheVerifiedOwnerWith($contact->id)){
                 return true;
-           }*/
+           }
          }
     }
 

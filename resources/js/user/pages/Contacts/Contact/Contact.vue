@@ -19,7 +19,6 @@
                             <span class="title">Groups:</span>
                             <v-chip
                                 small
-                                :color="group.default ? 'success' : ''"
                                 class="ma-2"
                                 v-for="group in contact.groups"
                                 :key="group.id">{{group.name}}
@@ -45,20 +44,22 @@
                         </div>
                     </v-col>
                 </v-row>
-                <v-card-actions class="justify-end">
-                    <v-btn text class="primary">Edit</v-btn>
+                <v-card-actions style="margin-top: 2.5rem">
+                    <v-btn text class="primary" @click="showEditForm=true">Edit</v-btn>
                     <v-btn class="error">Delete</v-btn>
                 </v-card-actions>
             </v-card>
+            <contact-form v-if="showEditForm" @close="showEditForm=false"/>
         </template>
     </div>
 </template>
 
 <script>
     import loader from '@/utils/loader'
+    import ContactForm from "./ContactForm";
 
     export default {
-        components: {loader},
+        components: {loader,ContactForm},
         mounted() {
             let route = this.$route;
             let tab = route.query.tab;
@@ -79,6 +80,7 @@
                 tab: '',
                 form: {},
                 action: 'getContact',
+                showEditForm: false
             }
         },
         methods: {},

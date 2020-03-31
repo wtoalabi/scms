@@ -1,5 +1,5 @@
 import {getRandomInt} from "../../../utils/helpers/integers";
-
+import Store from '../../store'
 export default {
     commitContacts(state, payload) {
         state.contacts.list = payload.data;
@@ -8,6 +8,7 @@ export default {
     },
     commitContact(state,payload){
         state.contacts.current = payload;
+        Store.commit('setTitle', payload.name);
         //state.breadcrumbs.map.contact.name = payload.name;
     }
 }

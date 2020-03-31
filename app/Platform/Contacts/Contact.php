@@ -10,15 +10,12 @@ use App\Platform\Phones\Phone;
 class Contact extends BaseModel {
     use CustomQuery;
     protected $casts = [
-        'birthday' => 'array'
+        'birthday' => 'array',
     ];
 
+    protected $fillable = ['first_name','last_name','email','birthday','dateAdded','address'];
     public function groups() {
-        return $this->belongsToMany(Group::class,'contacts_groups')->withPivot(['default']);
-    }
-
-    public function defaultGroup() {
-        return $this->groups()->wherePivot('default', true)->first();
+        return $this->belongsToMany(Group::class,'contacts_groups');
     }
 
     public function phones() {
@@ -26,7 +23,15 @@ class Contact extends BaseModel {
     }
 
     public function defaultPhone() {
-        return $this->phones->where('default', true)->first();
+        $default = $this->phones->where('default', true)->first();
+        if(!$default && count($this->phones)>0){
+            $default = $this->phones->first();
+            $default->update(['default'=>true]);
+        }
+        return $default;
+    }
+
+    public function getDateAddedAttribute($value) {
+        return intval($value);
     }
 }
-
