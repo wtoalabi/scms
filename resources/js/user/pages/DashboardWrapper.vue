@@ -36,11 +36,9 @@
         <v-content>
             <v-container fluid>
                 <div v-if="!loading">
-                    <div :key="breadcrumbsReloadCount">
-                        <v-breadcrumbs v-if="showBreadcrumbs"
-                                       :items="breadcrumbsList"
-                                       large></v-breadcrumbs>
-                    </div>
+                    <v-breadcrumbs v-if="showBreadcrumbs"
+                                   :items="breadcrumbsList"
+                                   large></v-breadcrumbs>
                 </div>
                 <router-view class="fill-height"/>
             </v-container>
@@ -99,12 +97,6 @@
                 title: `${title} ${title ? '|' : ''} SCMS`
             }
         },
-        watch: {
-            breadcrumbsReloadCount: function () {
-                console.log(this.breadcrumbsReloadCount, "COUNT")
-                console.log(this.breadcrumbsList,"THE LIST")
-            }
-        },
         computed: {
             loading() {
                 return this.$store.state.loading;
@@ -120,9 +112,6 @@
                     return this.$store.state.breadcrumbs.show
                 }
             },
-            breadcrumbsReloadCount() {
-                return this.$store.state.breadcrumbs.reloadCount
-            }
         }
     }
 </script>

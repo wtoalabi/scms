@@ -1,6 +1,5 @@
 export default {
     breadcrumbs: {
-        reloadCount: 0,
         list: [],
         show: true,
         dashboard: {

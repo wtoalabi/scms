@@ -13,14 +13,12 @@ export default {
 
     updateBreadcrumb(state, payload) {
         let crumbs = state.breadcrumbs.list;
-        //console.log([crumbs,payload])
-        state.breadcrumbs.list = crumbs.map(c => {
-            if (c.id === payload.crumb) {
-                c.text = payload.replacement;
+        state.breadcrumbs.list = crumbs.map(crumb => {
+            if (crumb.id === payload.crumb) {
+                crumb.text = payload.replacement;
             }
-            return c;
+            return crumb;
         });
-        state.breadcrumbs.reloadCount++;
         return crumbs;
     }
 }
