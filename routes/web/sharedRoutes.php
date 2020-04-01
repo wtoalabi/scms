@@ -20,5 +20,6 @@
         Route::post('contacts','Contacts\ContactsController@index');
         Route::patch('contact','Contacts\ContactsController@update');
         Route::post('contact','Contacts\ContactsController@create');
+        Route::delete('contact/{contact}','Contacts\ContactsController@destroy');
         Route::get('get-contact/{contact}','Contacts\ContactsController@show');
     });

@@ -31,6 +31,14 @@ class Contact extends BaseModel {
         return $default;
     }
 
+    public function defaultGroup() {
+        if($this->groups->count()>0){
+            return $this->groups->random();
+        }else{
+            return null;
+        }
+    }
+
     public function getDateAddedAttribute($value) {
         return intval($value);
     }

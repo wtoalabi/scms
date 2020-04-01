@@ -6,6 +6,7 @@
     use App\Platform\Phones\Resources\PhoneResource;
     use Carbon\Carbon;
     use Illuminate\Http\Resources\Json\JsonResource;
+    use phpDocumentor\Reflection\Types\This;
 
     class ContactResource extends JsonResource
     {
@@ -25,6 +26,7 @@
                     ];
                 }),
                 'defaultPhone' => new PhoneResource($this->defaultPhone()),
+                'defaultGroup' => $this->defaultGroup(),
                 'phones'=> new PhoneCollection($this->phones),
                 'dateAdded' => (new Carbon($this->dateAdded))->format("d-M-Y"),
                 'birthday' => ['day' => $this->birthday['day'], 'month' => $this->birthday['month']],

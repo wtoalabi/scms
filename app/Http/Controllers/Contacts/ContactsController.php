@@ -42,13 +42,6 @@
             $user = Authenticated::User();
             $user->can('update', Contact::class);
             $validated = $form->validated();
-            /*
-            'last_name' => $faker->lastName,
-            'email' => $faker->email,
-            'birthday' => ['day' => 13, 'month' => 10],
-            'dateAdded' => $faker->dateTimeBetween('-12 months', '-2 months'),
-            'address' => $faker->address
-             * */
             $contact = Contact::find(request('id'));
             $contact->update([
                 'first_name' => $validated['first_name'],
@@ -63,8 +56,14 @@
             return $this->singleResponse(new ContactResource($contact->fresh()));
         }
 
-        public function destroy() {
-            //
+        public function destroy($route,Contact $contact) {
+            $user = Authenticated::User();
+            $user->can('delete', [Contact::class,$contact]);
+            //$contact->delete();
+            $model = Contact::class;
+            $result = $this->list($model);
+            return $this->response($model, ContactCollection::class, $result);
+
         }
 
         private function savePhone(Collection $phones, $contact) {

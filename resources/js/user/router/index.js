@@ -32,6 +32,7 @@ const router = new VueRouter({
     ]
 });
 router.beforeEach((to, from, next) => {
+    console.log(to)
     Store.commit("resetQueryState");
     Store.commit("commitBreadcrumbs", to.meta);
     Store.commit('setTitle', to.name);

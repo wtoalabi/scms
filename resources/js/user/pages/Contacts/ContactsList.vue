@@ -86,7 +86,7 @@
                     <groups-chip :prop-groups="item.groups" :prop-group="item.defaultGroup"/>
                 </template>
                 <template v-slot:item.defaultPhone="{ item }">
-                    <v-chip small class="ma-2">
+                    <v-chip small class="ma-2" v-if="item.defaultPhone">
                         {{item.defaultPhone.number}}
                     </v-chip>
                 </template>

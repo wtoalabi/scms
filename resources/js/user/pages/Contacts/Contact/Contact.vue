@@ -2,7 +2,8 @@
     <div>
         <loader v-if="loading"/>
         <template v-else>
-            <v-card class="mx-auto" style="color: #0288D1; padding: .5rem 1rem" color="light-blue lighten-5"
+            <v-card class="mx-auto" style="color: #0288D1; padding: .5rem 1rem"
+                    color="light-blue lighten-5"
                     outlined raised>
                 <v-card-title class="text-center justify-center"
                               style="flex-direction: column; padding: .5rem 1rem">
@@ -46,10 +47,35 @@
                 </v-row>
                 <v-card-actions style="margin-top: 2.5rem">
                     <v-btn text class="primary" @click="showEditForm=true">Edit</v-btn>
-                    <v-btn class="error">Delete</v-btn>
+                    <v-btn @click="showDeleteDialog(contact)" class="error">Delete</v-btn>
                 </v-card-actions>
             </v-card>
             <contact-form v-if="showEditForm" @close="showEditForm=false"/>
+            <v-dialog
+                v-model="deleteDialog"
+                max-width="350"
+                heigth="300"
+            >
+                <v-card>
+                    <v-card-title class="headline">Delete Contact?</v-card-title>
+
+                    <v-card-text>
+                        Are you sure you want to delete the contact
+                    </v-card-text>
+
+                    <v-card-actions>
+                        <v-spacer></v-spacer>
+                        <v-btn small color="green darken-1" @click="deleteDialog = false">
+                            Cancel
+                        </v-btn>
+
+                        <v-btn small
+                               color="green darken-1" text @click="deleteContact">
+                            Delete Contact
+                        </v-btn>
+                    </v-card-actions>
+                </v-card>
+            </v-dialog>
         </template>
     </div>
 </template>
@@ -57,18 +83,16 @@
 <script>
     import loader from '@/utils/loader'
     import ContactForm from "./ContactForm";
+    import Requests from "../../../../utils/form/StateFulRequest";
 
     export default {
-        components: {loader,ContactForm},
+        components: {loader, ContactForm},
         mounted() {
             let route = this.$route;
             let tab = route.query.tab;
             let id = route.params.id;
             this.$store.dispatch(this.action, id);
             this.form['contact_id'] = id;
-            /*if(_.isEmpty(this.$store.state.currentPMetas)){
-                this.getProductMetas();
-            }*/
             if (tab) {
                 this.tab = tab;
             } else {
@@ -77,13 +101,30 @@
         },
         data() {
             return {
+                deleteDialog: false,
                 tab: '',
                 form: {},
                 action: 'getContact',
-                showEditForm: false
+                showEditForm: false,
             }
         },
-        methods: {},
+        methods: {
+            showDeleteDialog(contact) {
+                this.deleteDialog = true;
+            },
+            deleteContact() {
+                Requests(`contact/${this.contact.id}`, {
+                    store: this.$store,
+                    action: "delete",
+                    onSuccessCallback: (contacts) => {
+                        this.deleteDialog = false;
+                        console.log(contacts)
+                        this.$store.commit("commitContacts", contacts);
+                        this.$router.push("contacts/list")
+                    }
+                })
+            }
+        },
         computed: {
             contact() {
                 return this.$store.state.contacts.current

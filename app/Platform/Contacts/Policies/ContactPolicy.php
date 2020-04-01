@@ -26,12 +26,11 @@ class ContactPolicy extends BasePolicy
          }
     }
 
-    public function delete (){
-        $contact = Contact::find(request()->all()['id']);
+    public function delete ($user,$contact){
          if ($this->hasPermissionTo('DELETE_CONTACT')) {
-           /*if($this->isTheVerifiedOwnerWith($contact)){
+           if($this->isTheVerifiedOwnerWith($contact->user_id)){
                  return true;
-            }*/
+            }
          }
     }
 }
