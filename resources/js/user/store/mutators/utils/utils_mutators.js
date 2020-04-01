@@ -1,4 +1,3 @@
-import Route from '../../../router'
 let state = "";
 let breadcrumbs = [];
 let allBreadcrumbsMap = {};
@@ -14,17 +13,21 @@ export default {
 
     updateBreadcrumb(state, payload) {
         let crumbs = state.breadcrumbs.list;
-        crumbs.map(c => {
-            if (c.text === payload.crumb) {
+        //console.log([crumbs,payload])
+        state.breadcrumbs.list = crumbs.map(c => {
+            if (c.id === payload.crumb) {
                 c.text = payload.replacement;
             }
             return c;
         });
+        state.breadcrumbs.reloadCount++;
+        return crumbs;
     }
 }
 
 async function updateCrumbs(crumb,option = {disable: false}) {
     breadcrumbs.push({
+        id: crumb.id,
         text: crumb.name,
         href: crumb.url,
         disabled: option.disable

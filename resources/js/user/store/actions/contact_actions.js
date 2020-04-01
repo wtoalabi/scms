@@ -17,7 +17,6 @@ export default {
                 mutator: "commitContact",
                 onSuccessCallback: (contact) => {
                     store.commit("stopLoading");
-                    store.commit("updateBreadcrumb", {crumb: "Contact", replacement: contact.name})
                 }
             })
         }

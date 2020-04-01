@@ -7,8 +7,10 @@ export default {
         state.queries.pagination.queryPagination = payload.pagination;
     },
     commitContact(state,payload){
+        let previousName = _.cloneDeep(state.contacts.current.name);
+        console.log(previousName,"previousName")
         state.contacts.current = payload;
         Store.commit('setTitle', payload.name);
-        //state.breadcrumbs.map.contact.name = payload.name;
+        Store.commit("updateBreadcrumb", {crumb: "Contact", replacement: payload.name})
     }
 }
