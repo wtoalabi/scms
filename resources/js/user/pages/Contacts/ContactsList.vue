@@ -23,7 +23,7 @@
                             <v-expansion-panel-content>
                                 <v-row>
                                     <div class="col-5">
-                                        <group-selector :incomingGroup="0" action="loadContacts"/>
+                                        <group-selector @selected="reloadGroupChips" :incomingGroup="0" action="loadContacts"/>
                                     </div>
                                     <div class="col-7">
                                         <birth-day-selector
@@ -83,7 +83,7 @@
                     </v-tooltip>
                 </template>
                 <template v-slot:item.defaultGroup="{ item }">
-                    <groups-chip :prop-groups="item.groups" :prop-group="item.defaultGroup"/>
+                    <groups-chip :key="groupChipsReloadCount" :prop-groups="item.groups" :prop-group="item.defaultGroup"/>
                 </template>
                 <template v-slot:item.defaultPhone="{ item }">
                     <v-chip small class="ma-2" v-if="item.defaultPhone">
@@ -104,6 +104,7 @@
 
     export default {
         mounted() {
+            console.log("rendering contact list...")
         },
         components: {GroupsChip, GroupSelector, BirthDaySelector, DateSelector},
         data() {
@@ -147,7 +148,8 @@
                         sortable: true,
                         value: 'dateAdded',
                     },
-                ]
+                ],
+                groupChipsReloadCount:0
             }
         },
         watch: {
@@ -165,6 +167,9 @@
                     this.$store.commit("setQuerySearchArray", {'searchMultipleColumns': [['first_name', 'last_name', 'email'], searchText]});
                     this.loadContacts();
                 })
+            },
+            reloadGroupChips(){
+                this.groupChipsReloadCount++;
             },
             filterByDateOfBirth(selectedDateOfBirth) {
                 this.$store.commit("setQueryFilterByBirthday",

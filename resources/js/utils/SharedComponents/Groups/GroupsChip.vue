@@ -20,7 +20,7 @@
         props: ['propGroup','propGroups'],
         mounted() {
             this.group = _.isNotEmpty(this.searchedGroup) ? this.searchedGroup : this.propGroup;
-            this.groups = this.propGroups
+            this.groups = this.propGroups;
         },
         data() {
             return {

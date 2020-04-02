@@ -24,13 +24,12 @@ export default {
 }
 
 async function updateCrumbs(crumb,option = {disable: false}) {
-    console.log(crumb);
-    /*breadcrumbs.push({
+    breadcrumbs.push({
         id: crumb.id,
         text: crumb.name,
         href: crumb.url,
         disabled: option.disable
-    });*/
+    });
     return breadcrumbs;
 }
 async function addDashboardToBreadcrump() {

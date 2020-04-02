@@ -4,6 +4,7 @@ export default {
     async loadContacts(store) {
         await Request(`contacts`, {
             action: "post",
+            mergeQueries: true,
             mutator: 'commitContacts',
             store,
 
