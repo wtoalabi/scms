@@ -59,7 +59,7 @@
         public function destroy($route,Contact $contact) {
             $user = Authenticated::User();
             $user->can('delete', [Contact::class,$contact]);
-            //$contact->delete();
+            $contact->delete();
             $model = Contact::class;
             $result = $this->list($model);
             return $this->response($model, ContactCollection::class, $result);

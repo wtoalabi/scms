@@ -43,10 +43,10 @@
                 </div>
             </v-card>
             <v-data-table
-                @toggle-select-all="displayTop = !displayTop"
+                @toggle-select-all="selectAll"
                 :sort-by.sync="sortBy"
                 :sort-desc.sync="sortDesc" :search="searchText"
-                v-model="selected"
+                v-model="selectedContacts"
                 show-select
                 :loading="loading"
                 loading-text="Loading... Please wait"
@@ -57,13 +57,10 @@
                 class="elevation-1"
                 :options.sync="options"
                 :server-items-length="rowsNumber"
+                @input="select"
             >
                 <template v-slot:top>
-                    <div v-if="displayTop">
-                        <button>Send Mail</button>
-                        <button>Send SMS</button>
-                        to all at once?
-                    </div>
+                    <contact-list-top-buttons :selected-contacts="selectedContacts" :all-is-selected="allSelected" :display-top="displayTop"/>
                 </template>
                 <template v-slot:item.birthday="{ item }">
                     <p>{{item.birthday | birthdayString}}</p>
@@ -101,21 +98,19 @@
     import BirthDaySelector from "../../../utils/SharedComponents/Contacts/BirthDaySelector";
     import DateSelector from "../../../utils/SharedComponents/Contacts/DateSelector";
     import {turnDateToTimestamp} from "../../../utils/helpers/dates_time";
+    import ContactListTopButtons from "./partials/ContactListTopButtons";
 
     export default {
-        mounted() {
-            console.log("rendering contact list...")
-        },
-        components: {GroupsChip, GroupSelector, BirthDaySelector, DateSelector},
+        components: {ContactListTopButtons, GroupsChip, GroupSelector, BirthDaySelector, DateSelector},
         data() {
             return {
-                displayTop: false,
+                allSelected: false,
                 options: {},
                 form: {},
                 sortBy: ['first_name'],
                 sortDesc: false,
                 searchText: '',
-                selected: [],
+                selectedContacts: [],
                 headers: [
                     {
                         text: 'Name',
@@ -162,6 +157,12 @@
             }
         },
         methods: {
+            select(items){
+                console.log(items,"SELECT");
+                this.selectedContacts = items;
+                this.allSelected = this.allSelected && _.isNotEmpty(this.selectedContacts);
+                this.allSelected = items.length === this.itemsPerPage;
+            },
             search(searchText) {
                 _.debounce(async () => {
                     this.$store.commit("setQuerySearchArray", {'searchMultipleColumns': [['first_name', 'last_name', 'email'], searchText]});
@@ -189,6 +190,9 @@
             },
             clearQueries() {
                 this.$store.commit("resetSearchQueries");
+            },
+            selectAll(selected){
+                this.allSelected = selected.value;
             }
         },
         computed: {
@@ -200,6 +204,12 @@
             },
             rowsNumber() {
                 return this.$store.state.contacts.rowsNumber
+            },
+            itemsPerPage(){
+                return this.$store.state.queries.pagination.queryPagination.itemsPerPage;
+            },
+            displayTop(){
+                return _.isNotEmpty(this.selectedContacts);
             }
         }
     }

@@ -45008,4 +45008,10 @@ html.overflow-y-hidden {
 }
 .row[data-v-85f4951e] {
   justify-content: space-between;
+}.display[data-v-68589918] {
+  flex: 1;
+  display: flex;
+}
+.display button[data-v-68589918] {
+  margin-left: 10px;
 }

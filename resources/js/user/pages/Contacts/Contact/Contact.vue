@@ -118,9 +118,8 @@
                     action: "delete",
                     onSuccessCallback: (contacts) => {
                         this.deleteDialog = false;
-                        console.log(contacts)
                         this.$store.commit("commitContacts", contacts);
-                        this.$router.push("contacts/list")
+                        this.$router.push("/contacts/list")
                     }
                 })
             }
