@@ -30,7 +30,7 @@
         "webpack-livereload-plugin": "1"
     },
     "dependencies": {
-        "lodash-es": "^4.17.15",
+        "lodash-es": "^4.17.21",
         "vue": "^2.6.11",
         "vue-template-compiler": "^2.6.11"
     }
